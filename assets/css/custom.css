@@ -1530,6 +1530,18 @@ body:has(#n50-homepage) header {
   }
 }
 
+@media (max-width: 640px) {
+  /* Nav: smanjiti logo font da ne gura uz nav linkove */
+  .n50-nav-logo {
+    font-size: 1.35rem;
+  }
+  /* Nav: kompenzirati letter-spacing koji dodaje extra razmak na word-space
+     (vidljivo u "O projektu" → "O  PROJEKTU") */
+  header nav a {
+    word-spacing: -0.04em;
+  }
+}
+
 @media (max-width: 580px) {
   .n50-art-title {
     font-size: 30px;
