@@ -24,7 +24,7 @@
     id="{{ .Get "id" }}"
     class="n50-chart-canvas"
     data-type="{{ .Get "type" | default "bar" }}"
-    data-file="{{ .Get "datafile" | relURL }}"
+    data-file="{{ .Get "datafile" | strings.TrimPrefix "/" | relURL }}"
     data-color="{{ .Get "color" | default "amber" }}"
     style="height:{{ .Get "height" | default "340" }}px"
   ></div>
