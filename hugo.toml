@@ -1,0 +1,31 @@
+baseURL = "http://localhost:1313/"  # mijenjaj kad dobiješ domenu
+languageCode = "hr"
+defaultContentLanguage = "hr"
+theme = "congo"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true    # dopušta HTML u Markdownu
+  [markup.tableOfContents]
+    startLevel = 2     # h2 je prva razina u TOC-u
+    endLevel   = 3     # h3 je zadnja razina
+    ordered    = false
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]   # JSON treba Congo za search
+
+[related]
+  includeNewer = true
+  threshold    = 50
+  toLower      = true
+  [[related.indices]]
+    name   = "tags"
+    weight = 100
+  [[related.indices]]
+    name   = "categories"
+    weight = 70

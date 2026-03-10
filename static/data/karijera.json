@@ -1,0 +1,28 @@
+{
+  "linkedin_pregledi": [
+    {"tjedan": "T01", "pregledi": 12},
+    {"tjedan": "T02", "pregledi": 18},
+    {"tjedan": "T03", "pregledi": 14},
+    {"tjedan": "T04", "pregledi": 31},
+    {"tjedan": "T05", "pregledi": 45},
+    {"tjedan": "T06", "pregledi": 52},
+    {"tjedan": "T07", "pregledi": 61},
+    {"tjedan": "T08", "pregledi": 74}
+  ],
+  "cv_elementi_vaznost": [
+    {"element": "Konkretni rezultati",     "vaznost": 94},
+    {"element": "AI/digitalne vještine",   "vaznost": 88},
+    {"element": "Kratkoća (1 stranica)",   "vaznost": 82},
+    {"element": "LinkedIn profil link",    "vaznost": 76},
+    {"element": "Fotografija",             "vaznost": 61},
+    {"element": "Hobiji i interesi",       "vaznost": 28},
+    {"element": "Datum rođenja",           "vaznost": 12}
+  ],
+  "placa_pregovori": [
+    {"strategija": "Bez pregovaranja",      "ishod": 0},
+    {"strategija": "Tražiš gornju grantu",  "ishod": 8},
+    {"strategija": "Nudiš alternativu",     "ishod": 14},
+    {"strategija": "Benchmark + dokaz",     "ishod": 18},
+    {"strategija": "BATNA priprema",        "ishod": 22}
+  ]
+}

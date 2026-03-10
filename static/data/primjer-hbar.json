@@ -1,0 +1,10 @@
+{
+  "data": [
+    { "label": "Ušteda vremena",        "value": 78 },
+    { "label": "Brže pisanje e-maila",  "value": 65 },
+    { "label": "Priprema prezentacija", "value": 61 },
+    { "label": "Analiza podataka",      "value": 54 },
+    { "label": "Prijevod dokumenata",   "value": 49 },
+    { "label": "Sažimanje izvještaja",  "value": 43 }
+  ]
+}

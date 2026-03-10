@@ -1,0 +1,21 @@
+{
+  "prompt_kategorije": [
+    {"kategorija": "Sažimanje teksta",   "korisnost": 91, "usteda_min": 18},
+    {"kategorija": "Pisanje emailova",   "korisnost": 87, "usteda_min": 22},
+    {"kategorija": "Analiza dokumenata", "korisnost": 83, "usteda_min": 35},
+    {"kategorija": "Prijevod",           "korisnost": 79, "usteda_min": 28},
+    {"kategorija": "Brainstorming",      "korisnost": 74, "usteda_min": 15},
+    {"kategorija": "Formatiranje",       "korisnost": 68, "usteda_min": 12},
+    {"kategorija": "Izvještaji",         "korisnost": 65, "usteda_min": 40}
+  ],
+  "ai_ured_ustedevina": [
+    {"tjedan": "T01", "bez_AI": 480, "s_AI": 420},
+    {"tjedan": "T02", "bez_AI": 480, "s_AI": 390},
+    {"tjedan": "T03", "bez_AI": 480, "s_AI": 365},
+    {"tjedan": "T04", "bez_AI": 480, "s_AI": 340},
+    {"tjedan": "T05", "bez_AI": 480, "s_AI": 315},
+    {"tjedan": "T06", "bez_AI": 480, "s_AI": 295},
+    {"tjedan": "T07", "bez_AI": 480, "s_AI": 275},
+    {"tjedan": "T08", "bez_AI": 480, "s_AI": 260}
+  ]
+}

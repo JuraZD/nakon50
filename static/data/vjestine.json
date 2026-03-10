@@ -1,0 +1,35 @@
+{
+  "vjestine_trendovi": [
+    {"tjedan": "T01", "Excel": 12, "Python": 3,  "AI_alati": 28, "LinkedIn": 8},
+    {"tjedan": "T02", "Excel": 18, "Python": 5,  "AI_alati": 35, "LinkedIn": 11},
+    {"tjedan": "T03", "Excel": 22, "Python": 8,  "AI_alati": 41, "LinkedIn": 14},
+    {"tjedan": "T04", "Excel": 19, "Python": 12, "AI_alati": 38, "LinkedIn": 16},
+    {"tjedan": "T05", "Excel": 26, "Python": 16, "AI_alati": 52, "LinkedIn": 18},
+    {"tjedan": "T06", "Excel": 30, "Python": 21, "AI_alati": 60, "LinkedIn": 22},
+    {"tjedan": "T07", "Excel": 28, "Python": 26, "AI_alati": 67, "LinkedIn": 20},
+    {"tjedan": "T08", "Excel": 34, "Python": 31, "AI_alati": 74, "LinkedIn": 26},
+    {"tjedan": "T09", "Excel": 38, "Python": 38, "AI_alati": 82, "LinkedIn": 30},
+    {"tjedan": "T10", "Excel": 42, "Python": 44, "AI_alati": 89, "LinkedIn": 34},
+    {"tjedan": "T11", "Excel": 45, "Python": 52, "AI_alati": 95, "LinkedIn": 38},
+    {"tjedan": "T12", "Excel": 48, "Python": 61, "AI_alati": 103,"LinkedIn": 42}
+  ],
+  "alati_popularnost": [
+    {"alat": "ChatGPT",     "korisnici": 87, "kategorija": "AI"},
+    {"alat": "Claude",      "korisnici": 64, "kategorija": "AI"},
+    {"alat": "Excel",       "korisnici": 91, "kategorija": "Ured"},
+    {"alat": "Python",      "korisnici": 43, "kategorija": "Kod"},
+    {"alat": "Obsidian",    "korisnici": 38, "kategorija": "PKM"},
+    {"alat": "LinkedIn",    "korisnici": 72, "kategorija": "Karijera"},
+    {"alat": "Canva",       "korisnici": 55, "kategorija": "Dizajn"},
+    {"alat": "Notion",      "korisnici": 31, "kategorija": "PKM"},
+    {"alat": "Perplexity",  "korisnici": 28, "kategorija": "AI"},
+    {"alat": "Google Sheets","korisnici": 69,"kategorija": "Ured"}
+  ],
+  "ucenje_po_dobi": [
+    {"dobna_skupina": "45–49", "sati_tjedno": 3.2, "zadovoljstvo": 72},
+    {"dobna_skupina": "50–54", "sati_tjedno": 4.1, "zadovoljstvo": 78},
+    {"dobna_skupina": "55–59", "sati_tjedno": 3.8, "zadovoljstvo": 81},
+    {"dobna_skupina": "60–64", "sati_tjedno": 2.9, "zadovoljstvo": 75},
+    {"dobna_skupina": "65+",   "sati_tjedno": 2.2, "zadovoljstvo": 83}
+  ]
+}

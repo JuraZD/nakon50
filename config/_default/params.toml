@@ -1,0 +1,37 @@
+# Congo vizualni parametri za Nakon50
+
+# === TEMA I BOJA ===
+colorScheme = "nakon50"      # prilagođena shema — Nakon50 paleta
+defaultAppearance = "light"  # "light" | "dark" | "auto"
+autoSwitchAppearance = false  # ne prati dark mode sustava
+
+# Primarna boja akcenta (Congo koristi Tailwind CSS varijable)
+# Za Nakon50 preporučam: slate (neutral, profesionalno) ili ocean (modro, tech)
+# Možeš prebacivati između: congo | avocado | ocean | fire | slate | noir | princess | neon | custom
+
+# === HOMEPAGE LAYOUT ===
+# Za Nakon50 optimalno: "profile" za start (foto + bio + linkovi)
+# Alternativa: "page" (čisti content bez sidebara)
+homepage.layout = "profile"
+homepage.homepageImage = "img/logo.png"   # ako imaš logo
+homepage.showRecent = true
+homepage.recentLimit = 6
+
+# === ČLANCI ===
+article.showDate = true
+article.showReadingTime = true
+article.showWordCount = false
+article.showTableOfContents = true
+article.sharingLinks = []          # maknuti social share gumbe u startu
+
+# === NAVIGACIJA ===
+header.layout = "basic"            # "basic" | "fixed" | "fixed-fill"
+
+# === FOOTER ===
+footer.showCopyright = true
+footer.showThemeAttribution = false   # makni "Powered by Congo"
+footer.showScrollToTop = true
+
+# === SEO ===
+enableRobotsTxt = true
+sitemap.excludedKinds = []

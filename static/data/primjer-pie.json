@@ -1,0 +1,9 @@
+{
+  "data": [
+    { "label": "AI alati",    "value": 32 },
+    { "label": "Excel/Sheets","value": 28 },
+    { "label": "Pisanje",     "value": 18 },
+    { "label": "Prezentacije","value": 14 },
+    { "label": "Ostalo",      "value": 8  }
+  ]
+}

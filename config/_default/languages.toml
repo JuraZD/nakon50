@@ -1,0 +1,11 @@
+[hr]
+  languageName = "Hrvatski"
+  weight = 1
+  title = "Nakon50"
+  [hr.params]
+    description = "Novi dan. Nove vještine. AI, digitalne vještine i karijera 50+."
+      [hr.params.author]
+        name = "Nakon50"
+        [hr.params.homepage]
+          showRecent = true
+          recentLimit = 6

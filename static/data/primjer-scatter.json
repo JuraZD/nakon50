@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "x": 5,  "y": 18,  "label": "LinkedIn" },
+    { "x": 12, "y": 32,  "label": "Portfolio" },
+    { "x": 8,  "y": 24,  "label": "GitHub" },
+    { "x": 20, "y": 55,  "label": "Blog" },
+    { "x": 15, "y": 41,  "label": "Newsletter" },
+    { "x": 3,  "y": 9,   "label": "Twitter/X" },
+    { "x": 25, "y": 72,  "label": "YouTube" },
+    { "x": 18, "y": 48,  "label": "Podcast" },
+    { "x": 7,  "y": 22,  "label": "Forum" },
+    { "x": 30, "y": 88,  "label": "E-tečaj" }
+  ]
+}

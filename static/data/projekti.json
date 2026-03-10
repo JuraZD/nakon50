@@ -1,0 +1,17 @@
+{
+  "digitalni_prihodi": [
+    {"mjesec": "M01", "konsulting": 0,    "e_tecaj": 0,   "predlozak": 0},
+    {"mjesec": "M02", "konsulting": 800,  "e_tecaj": 0,   "predlozak": 0},
+    {"mjesec": "M03", "konsulting": 1200, "e_tecaj": 0,   "predlozak": 150},
+    {"mjesec": "M04", "konsulting": 1500, "e_tecaj": 200, "predlozak": 210},
+    {"mjesec": "M05", "konsulting": 1800, "e_tecaj": 480, "predlozak": 340},
+    {"mjesec": "M06", "konsulting": 2100, "e_tecaj": 720, "predlozak": 480}
+  ],
+  "freelance_platforme": [
+    {"platforma": "Fiverr",     "pocetnici": 62, "iskusni": 38},
+    {"platforma": "Upwork",     "pocetnici": 41, "iskusni": 79},
+    {"platforma": "LinkedIn",   "pocetnici": 35, "iskusni": 88},
+    {"platforma": "Direktno",   "pocetnici": 18, "iskusni": 94},
+    {"platforma": "Preporuka",  "pocetnici": 24, "iskusni": 91}
+  ]
+}

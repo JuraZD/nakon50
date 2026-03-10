@@ -1,0 +1,457 @@
+{{/*
+  Shortcode: d3chart
+  Podržani tipovi: bar | hbar | line | multiline | pie | donut | scatter
+
+  Primjeri:
+    {{< d3chart id="chart-1" type="bar" datafile="/data/primjer-bar.json" title="Naslov" >}}
+    {{< d3chart id="chart-2" type="multiline" datafile="/data/primjer-line.json" title="Rast" subtitle="Tjedni podaci" source="Procjena" >}}
+
+  Format JSON po tipu:
+    bar/hbar:      { "data": [{"label":"A","value":42}, ...] }
+    line:          { "data": [{"x":"Sij","y":100}, ...] }
+    multiline:     { "series": [{"name":"Serija A","data":[{"x":"Sij","y":100},...]},...] }
+    pie/donut:     { "data": [{"label":"Kategorija","value":35}, ...] }
+    scatter:       { "data": [{"x":10,"y":20,"label":"A"}, ...] }
+*/}}
+
+<div class="n50-chart-block">
+  <div class="n50-chart-header">
+    {{ with .Get "label" }}<span class="n50-chart-label">{{ . }}</span>{{ end }}
+    <h3 class="n50-chart-title">{{ .Get "title" }}</h3>
+    {{ with .Get "subtitle" }}<p class="n50-chart-subtitle">{{ . }}</p>{{ end }}
+  </div>
+  <div
+    id="{{ .Get "id" }}"
+    class="n50-chart-canvas"
+    data-type="{{ .Get "type" | default "bar" }}"
+    data-file="{{ .Get "datafile" }}"
+    data-color="{{ .Get "color" | default "amber" }}"
+    style="height:{{ .Get "height" | default "340" }}px"
+  ></div>
+  {{ with .Get "source" }}
+    <p class="n50-chart-source">Izvor: {{ . }}</p>
+  {{ end }}
+</div>
+
+<script>
+/* ── D3 Chart renderer — Nakon50 ── */
+(function () {
+  /* Paleta Nakon50 */
+  var PAL = {
+    amber:   '#B84E16',
+    amberPale:'#DC8C50',
+    navy:    '#163458',
+    navyPale:'#3C5A80',
+    charcoal:'#1A1816',
+    stone:   '#C8C0B4',
+    white:   '#FFFDF9',
+    ivory:   '#F5F0E8',
+  };
+  var MULTI_COLORS = [PAL.amber, PAL.navy, PAL.navyPale, PAL.amberPale, PAL.charcoal];
+  var FONT_MONO = "'Geist Mono', monospace";
+  var FONT_BODY = "'Instrument Sans', sans-serif";
+  var FONT_DISP = "'Big Shoulders Display', sans-serif";
+
+  /* ── Inicijalizacija (jednom po stranici) ── */
+  if (!window._n50D3Init) {
+    window._n50D3Init = true;
+    window._n50D3Queue = [];
+    window._n50D3Loaded = false;
+
+    /* Tooltip div */
+    if (!document.getElementById('n50-tooltip')) {
+      var tt = document.createElement('div');
+      tt.id = 'n50-tooltip';
+      document.body.appendChild(tt);
+    }
+
+    /* Učitaj D3 v7 */
+    var s = document.createElement('script');
+    s.src = 'https://d3js.org/d3.v7.min.js';
+    s.onload = function () {
+      window._n50D3Loaded = true;
+      window._n50D3Queue.forEach(function (id) { renderChart(id); });
+      window._n50D3Queue = [];
+    };
+    document.head.appendChild(s);
+  }
+
+  /* ── Tooltip helpers (jednom po stranici, ako još nisu definirani) ── */
+  if (!window._n50ShowTip) {
+    window._n50ShowTip = function(html, e) {
+      var tt = document.getElementById('n50-tooltip');
+      if (!tt) return;
+      tt.innerHTML = html;
+      tt.style.opacity = '1';
+      tt.style.left = (e.clientX + 14) + 'px';
+      tt.style.top  = (e.clientY - 8)  + 'px';
+    };
+    window._n50MoveTip = function(e) {
+      var tt = document.getElementById('n50-tooltip');
+      if (!tt) return;
+      tt.style.left = (e.clientX + 14) + 'px';
+      tt.style.top  = (e.clientY - 8)  + 'px';
+    };
+    window._n50HideTip = function() {
+      var tt = document.getElementById('n50-tooltip');
+      if (tt) tt.style.opacity = '0';
+    };
+  }
+
+  /* Registriraj ovaj grafikon */
+  var chartId = '{{ .Get "id" }}';
+  if (window._n50D3Loaded) {
+    renderChart(chartId);
+  } else {
+    window._n50D3Queue = window._n50D3Queue || [];
+    window._n50D3Queue.push(chartId);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     DISPATCHER — odabire renderer prema data-type atributu
+  ═══════════════════════════════════════════════════════ */
+  function renderChart(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var type     = el.dataset.type;
+    var dataFile = el.dataset.file;
+    var height   = parseInt(el.style.height) || 340;
+
+    d3.json(dataFile).then(function (json) {
+      switch (type) {
+        case 'bar':       drawBar(el, json.data, height, false); break;
+        case 'hbar':      drawBar(el, json.data, height, true);  break;
+        case 'line':      drawLine(el, json.data, height);       break;
+        case 'multiline': drawMultiLine(el, json.series, height);break;
+        case 'pie':       drawPie(el, json.data, height, false); break;
+        case 'donut':     drawPie(el, json.data, height, true);  break;
+        case 'scatter':   drawScatter(el, json.data, height);    break;
+        default:          drawBar(el, json.data, height, false);
+      }
+    }).catch(function (err) {
+      el.innerHTML = '<p style="color:' + PAL.stone + ';font-family:' + FONT_MONO + ';font-size:12px;padding:16px">Greška pri učitavanju podataka.</p>';
+      console.warn('n50-chart: ' + err);
+    });
+  }
+
+  /* ── Pomoćne funkcije ── */
+  function axisStyle(sel) {
+    sel.selectAll('text')
+      .style('font-family', FONT_MONO)
+      .style('font-size', '11px')
+      .style('fill', PAL.stone);
+    sel.selectAll('line, path')
+      .style('stroke', 'rgba(200,192,180,0.2)');
+  }
+  function grid(svg, scale, orient, w, h) {
+    var fn = orient === 'x'
+      ? d3.axisBottom(scale).tickSize(-h).tickFormat('')
+      : d3.axisLeft(scale).tickSize(-w).tickFormat('');
+    svg.append('g')
+      .attr('transform', orient === 'x' ? 'translate(0,' + h + ')' : '')
+      .call(fn)
+      .selectAll('line')
+      .style('stroke', 'rgba(200,192,180,0.12)')
+      .style('stroke-dasharray', '3,3');
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     BAR (vertical / horizontal)
+     JSON: { "data": [{"label":"A","value":42}, ...] }
+  ═══════════════════════════════════════════════════════ */
+  function drawBar(el, data, totalH, horizontal) {
+    el.innerHTML = '';
+    var margin = horizontal
+      ? { top: 16, right: 32, bottom: 16, left: 120 }
+      : { top: 16, right: 16, bottom: 56, left: 48 };
+    var W = el.clientWidth - margin.left - margin.right;
+    var H = totalH - margin.top - margin.bottom;
+
+    var svg = d3.select(el).append('svg')
+      .attr('width', '100%')
+      .attr('height', totalH)
+      .attr('viewBox', '0 0 ' + (W + margin.left + margin.right) + ' ' + totalH)
+      .append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    if (horizontal) {
+      var x = d3.scaleLinear().domain([0, d3.max(data, function(d){return d.value;}) * 1.1]).range([0, W]);
+      var y = d3.scaleBand().domain(data.map(function(d){return d.label;})).range([0, H]).padding(0.3);
+
+      grid(svg, x, 'x', W, H);
+      svg.append('g').call(d3.axisLeft(y).tickSize(0)).call(axisStyle)
+        .select('.domain').remove();
+      svg.append('g').attr('transform','translate(0,'+H+')')
+        .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format('.0f'))).call(axisStyle)
+        .select('.domain').remove();
+
+      svg.selectAll('.bar').data(data).enter().append('rect')
+        .attr('class','bar')
+        .attr('x', 0)
+        .attr('y', function(d){return y(d.label);})
+        .attr('width', 0)
+        .attr('height', y.bandwidth())
+        .attr('fill', PAL.amber)
+        .style('cursor','pointer')
+        .on('mousemove', function(e,d){ window._n50ShowTip && window._n50ShowTip('<b>' + d.label + '</b><br>' + d.value, e); })
+        .on('mouseleave', function(){ window._n50HideTip && window._n50HideTip(); })
+        .transition().duration(700).ease(d3.easeCubicOut)
+        .attr('width', function(d){return x(d.value);});
+
+      svg.selectAll('.val').data(data).enter().append('text')
+        .attr('class','val')
+        .attr('x', function(d){return x(d.value) + 6;})
+        .attr('y', function(d){return y(d.label) + y.bandwidth()/2 + 4;})
+        .style('font-family', FONT_MONO).style('font-size','11px').style('fill', PAL.stone)
+        .text(function(d){return d.value;});
+
+    } else {
+      var x2 = d3.scaleBand().domain(data.map(function(d){return d.label;})).range([0, W]).padding(0.3);
+      var y2 = d3.scaleLinear().domain([0, d3.max(data, function(d){return d.value;}) * 1.1]).range([H, 0]);
+
+      grid(svg, y2, 'y', W, H);
+      svg.append('g').attr('transform','translate(0,'+H+')')
+        .call(d3.axisBottom(x2).tickSize(0)).call(axisStyle)
+        .select('.domain').remove();
+      svg.append('g').call(d3.axisLeft(y2).ticks(5).tickFormat(d3.format('.0f'))).call(axisStyle)
+        .select('.domain').remove();
+
+      svg.selectAll('.bar').data(data).enter().append('rect')
+        .attr('class','bar')
+        .attr('x', function(d){return x2(d.label);})
+        .attr('y', H)
+        .attr('width', x2.bandwidth())
+        .attr('height', 0)
+        .attr('fill', PAL.amber)
+        .style('cursor','pointer')
+        .on('mousemove', function(e,d){ window._n50ShowTip && window._n50ShowTip('<b>' + d.label + '</b><br>' + d.value, e); })
+        .on('mouseleave', function(){ window._n50HideTip && window._n50HideTip(); })
+        .transition().duration(700).ease(d3.easeCubicOut)
+        .attr('y', function(d){return y2(d.value);})
+        .attr('height', function(d){return H - y2(d.value);});
+
+      svg.selectAll('.val').data(data).enter().append('text')
+        .attr('class','val')
+        .attr('x', function(d){return x2(d.label) + x2.bandwidth()/2;})
+        .attr('y', function(d){return y2(d.value) - 6;})
+        .attr('text-anchor','middle')
+        .style('font-family', FONT_MONO).style('font-size','11px').style('fill', PAL.stone)
+        .text(function(d){return d.value;});
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     LINE (jednolinijski)
+     JSON: { "data": [{"x":"Sij","y":100}, ...] }
+  ═══════════════════════════════════════════════════════ */
+  function drawLine(el, data, totalH) {
+    el.innerHTML = '';
+    var margin = { top: 16, right: 24, bottom: 48, left: 52 };
+    var W = el.clientWidth - margin.left - margin.right;
+    var H = totalH - margin.top - margin.bottom;
+
+    var svg = d3.select(el).append('svg')
+      .attr('width','100%').attr('height', totalH)
+      .attr('viewBox','0 0 '+(W+margin.left+margin.right)+' '+totalH)
+      .append('g').attr('transform','translate('+margin.left+','+margin.top+')');
+
+    var xScale = d3.scalePoint().domain(data.map(function(d){return d.x;})).range([0, W]);
+    var yMax = d3.max(data, function(d){return d.y;});
+    var yScale = d3.scaleLinear().domain([0, yMax * 1.1]).range([H, 0]);
+
+    grid(svg, yScale, 'y', W, H);
+    svg.append('g').attr('transform','translate(0,'+H+')')
+      .call(d3.axisBottom(xScale).tickSize(0)).call(axisStyle)
+      .select('.domain').remove();
+    svg.append('g').call(d3.axisLeft(yScale).ticks(5)).call(axisStyle)
+      .select('.domain').remove();
+
+    /* Area fill */
+    var area = d3.area()
+      .x(function(d){return xScale(d.x);})
+      .y0(H).y1(function(d){return yScale(d.y);})
+      .curve(d3.curveCatmullRom);
+
+    var defs = svg.append('defs');
+    var grad = defs.append('linearGradient').attr('id','n50-area-grad').attr('gradientUnits','userSpaceOnUse').attr('x1',0).attr('y1',0).attr('x2',0).attr('y2',H);
+    grad.append('stop').attr('offset','0%').attr('stop-color',PAL.amber).attr('stop-opacity',0.25);
+    grad.append('stop').attr('offset','100%').attr('stop-color',PAL.amber).attr('stop-opacity',0);
+
+    svg.append('path').datum(data).attr('fill','url(#n50-area-grad)').attr('d', area);
+
+    /* Line */
+    var line = d3.line()
+      .x(function(d){return xScale(d.x);})
+      .y(function(d){return yScale(d.y);})
+      .curve(d3.curveCatmullRom);
+
+    var path = svg.append('path').datum(data)
+      .attr('fill','none').attr('stroke',PAL.amber).attr('stroke-width',2.5)
+      .attr('d', line);
+    var len = path.node().getTotalLength();
+    path.attr('stroke-dasharray', len+' '+len).attr('stroke-dashoffset', len)
+      .transition().duration(900).ease(d3.easeCubicOut).attr('stroke-dashoffset', 0);
+
+    /* Dots */
+    svg.selectAll('.dot').data(data).enter().append('circle')
+      .attr('class','dot').attr('cx',function(d){return xScale(d.x);}).attr('cy',function(d){return yScale(d.y);})
+      .attr('r',4).attr('fill',PAL.amber).attr('stroke',PAL.white).attr('stroke-width',2)
+      .style('cursor','pointer')
+      .on('mousemove', function(e,d){ window._n50ShowTip && window._n50ShowTip('<b>' + d.x + '</b><br>' + d.y, e); })
+      .on('mouseleave', function(){ window._n50HideTip && window._n50HideTip(); });
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     MULTILINE
+     JSON: { "series": [{"name":"A","data":[{"x":"Sij","y":100},...]},...] }
+  ═══════════════════════════════════════════════════════ */
+  function drawMultiLine(el, series, totalH) {
+    el.innerHTML = '';
+    var legendH = 28;
+    var margin = { top: 16, right: 24, bottom: 48 + legendH, left: 52 };
+    var W = el.clientWidth - margin.left - margin.right;
+    var H = totalH - margin.top - margin.bottom;
+
+    var svg = d3.select(el).append('svg')
+      .attr('width','100%').attr('height', totalH)
+      .attr('viewBox','0 0 '+(W+margin.left+margin.right)+' '+totalH)
+      .append('g').attr('transform','translate('+margin.left+','+margin.top+')');
+
+    var allX = series[0].data.map(function(d){return d.x;});
+    var allY = d3.max(series, function(s){return d3.max(s.data, function(d){return d.y;});});
+    var xScale = d3.scalePoint().domain(allX).range([0, W]);
+    var yScale = d3.scaleLinear().domain([0, allY * 1.1]).range([H, 0]);
+    var color  = function(i){return MULTI_COLORS[i % MULTI_COLORS.length];};
+
+    grid(svg, yScale, 'y', W, H);
+    svg.append('g').attr('transform','translate(0,'+H+')')
+      .call(d3.axisBottom(xScale).tickSize(0)).call(axisStyle)
+      .select('.domain').remove();
+    svg.append('g').call(d3.axisLeft(yScale).ticks(5)).call(axisStyle)
+      .select('.domain').remove();
+
+    var lineGen = d3.line()
+      .x(function(d){return xScale(d.x);}).y(function(d){return yScale(d.y);})
+      .curve(d3.curveCatmullRom);
+
+    series.forEach(function(s, i) {
+      var path = svg.append('path').datum(s.data)
+        .attr('fill','none').attr('stroke', color(i)).attr('stroke-width', 2.5)
+        .attr('d', lineGen);
+      var len = path.node().getTotalLength();
+      path.attr('stroke-dasharray', len+' '+len).attr('stroke-dashoffset', len)
+        .transition().duration(900).delay(i*150).ease(d3.easeCubicOut).attr('stroke-dashoffset', 0);
+
+      svg.selectAll('.dot-'+i).data(s.data).enter().append('circle')
+        .attr('cx',function(d){return xScale(d.x);}).attr('cy',function(d){return yScale(d.y);})
+        .attr('r',3).attr('fill', color(i)).attr('stroke', PAL.white).attr('stroke-width',1.5);
+    });
+
+    /* Legenda */
+    var legend = svg.append('g').attr('transform','translate(0,'+(H+legendH)+')');
+    series.forEach(function(s, i) {
+      var offset = i * 120;
+      legend.append('rect').attr('x', offset).attr('y', 0).attr('width',12).attr('height',3).attr('fill',color(i));
+      legend.append('text').attr('x', offset + 16).attr('y', 4)
+        .style('font-family', FONT_MONO).style('font-size','11px').style('fill',PAL.stone)
+        .text(s.name);
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     PIE / DONUT
+     JSON: { "data": [{"label":"A","value":35}, ...] }
+  ═══════════════════════════════════════════════════════ */
+  function drawPie(el, data, totalH, isDonut) {
+    el.innerHTML = '';
+    var W = el.clientWidth;
+    var r = Math.min(W, totalH) / 2 - 32;
+    var cx = W / 2, cy = totalH / 2;
+    var color = function(i){return MULTI_COLORS[i % MULTI_COLORS.length];};
+
+    var svg = d3.select(el).append('svg')
+      .attr('width','100%').attr('height', totalH)
+      .attr('viewBox','0 0 '+W+' '+totalH);
+
+    var arc = d3.arc().innerRadius(isDonut ? r * 0.52 : 0).outerRadius(r);
+    var arcHover = d3.arc().innerRadius(isDonut ? r * 0.52 : 0).outerRadius(r + 8);
+    var pie = d3.pie().value(function(d){return d.value;}).sort(null);
+
+    var g = svg.append('g').attr('transform','translate('+cx+','+cy+')');
+
+    var slices = g.selectAll('path').data(pie(data)).enter().append('path')
+      .attr('fill', function(d,i){return color(i);})
+      .attr('stroke', PAL.ivory).attr('stroke-width', 2)
+      .each(function(d){this._current = {startAngle:0, endAngle:0};})
+      .on('mouseenter', function(e,d,i){d3.select(this).attr('d', arcHover(d));})
+      .on('mouseleave', function(e,d){d3.select(this).attr('d', arc(d));})
+      .transition().duration(700).ease(d3.easeCubicOut)
+      .attrTween('d', function(d){
+        var interp = d3.interpolate({startAngle:0,endAngle:0}, d);
+        return function(t){return arc(interp(t));};
+      });
+
+    if (isDonut) {
+      var total = d3.sum(data, function(d){return d.value;});
+      g.append('text').attr('text-anchor','middle').attr('dy','0.35em')
+        .style('font-family',FONT_DISP).style('font-weight','700').style('font-size','28px').style('fill',PAL.charcoal)
+        .text(total);
+    }
+
+    /* Legenda desno */
+    var legendX = cx + r + 24;
+    var legendY = cy - (data.length * 20)/2;
+    data.forEach(function(d, i) {
+      var row = svg.append('g').attr('transform','translate('+legendX+','+(legendY + i*22)+')');
+      row.append('rect').attr('width',10).attr('height',10).attr('y',-5).attr('fill',color(i));
+      row.append('text').attr('x',16).attr('y',1)
+        .style('font-family',FONT_MONO).style('font-size','11px').style('fill',PAL.stone)
+        .text(d.label + ' (' + d.value + '%)');
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     SCATTER
+     JSON: { "data": [{"x":10,"y":20,"label":"A"}, ...] }
+  ═══════════════════════════════════════════════════════ */
+  function drawScatter(el, data, totalH) {
+    el.innerHTML = '';
+    var margin = { top: 16, right: 24, bottom: 48, left: 52 };
+    var W = el.clientWidth - margin.left - margin.right;
+    var H = totalH - margin.top - margin.bottom;
+
+    var svg = d3.select(el).append('svg')
+      .attr('width','100%').attr('height', totalH)
+      .attr('viewBox','0 0 '+(W+margin.left+margin.right)+' '+totalH)
+      .append('g').attr('transform','translate('+margin.left+','+margin.top+')');
+
+    var xScale = d3.scaleLinear().domain([0, d3.max(data,function(d){return d.x;}) * 1.1]).range([0, W]);
+    var yScale = d3.scaleLinear().domain([0, d3.max(data,function(d){return d.y;}) * 1.1]).range([H, 0]);
+
+    grid(svg, xScale, 'x', W, H);
+    grid(svg, yScale, 'y', W, H);
+    svg.append('g').attr('transform','translate(0,'+H+')').call(d3.axisBottom(xScale).ticks(5)).call(axisStyle).select('.domain').remove();
+    svg.append('g').call(d3.axisLeft(yScale).ticks(5)).call(axisStyle).select('.domain').remove();
+
+    svg.selectAll('.dot').data(data).enter().append('circle')
+      .attr('class','dot')
+      .attr('cx', function(d){return xScale(d.x);})
+      .attr('cy', function(d){return yScale(d.y);})
+      .attr('r', 0).attr('fill', PAL.amber).attr('fill-opacity',0.75)
+      .attr('stroke', PAL.amber).attr('stroke-width',1)
+      .style('cursor','pointer')
+      .on('mousemove', function(e,d){ window._n50ShowTip && window._n50ShowTip((d.label ? '<b>' + d.label + '</b><br>' : '') + 'x: ' + d.x + '<br>y: ' + d.y, e); })
+      .on('mouseleave', function(){ window._n50HideTip && window._n50HideTip(); })
+      .transition().duration(600).delay(function(d,i){return i*40;})
+      .attr('r', 6);
+
+    svg.selectAll('.label').data(data).enter().append('text')
+      .attr('class','label')
+      .attr('x', function(d){return xScale(d.x) + 9;})
+      .attr('y', function(d){return yScale(d.y) + 4;})
+      .style('font-family', FONT_MONO).style('font-size','10px').style('fill',PAL.stone)
+      .text(function(d){return d.label || '';});
+  }
+
+})();
+</script>

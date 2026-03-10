@@ -1,0 +1,7 @@
+{
+  "data": [
+    { "label": "Završeno",    "value": 68 },
+    { "label": "U tijeku",    "value": 22 },
+    { "label": "Planirano",   "value": 10 }
+  ]
+}

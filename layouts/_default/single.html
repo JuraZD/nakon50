@@ -1,0 +1,97 @@
+{{ define "main" }}
+<div class="n50-single">
+
+  <!-- Article header -->
+  <header class="n50-art-header">
+    <div class="n50-art-label">
+      {{ with index .Params.categories 0 }}{{ . | upper }}{{ end }}
+    </div>
+    <h1 class="n50-art-title">{{ .Title }}</h1>
+    <div class="n50-art-meta">
+      {{ with index .Params.categories 0 }}
+        <span class="n50-art-cat">{{ . | upper }}</span>
+      {{ end }}
+      <span>{{ .Date.Format "02.01.2006." }}</span>
+      <span>{{ .ReadingTime }} min čitanja</span>
+    </div>
+    {{ with .Params.summary }}
+      <p class="n50-art-summary">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <!-- Two-column body -->
+  <div class="n50-art-body">
+
+    <!-- Main content -->
+    <article class="n50-art-content">
+      {{ .Content }}
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="n50-art-sidebar">
+
+      <!-- TOC -->
+      {{ if and .TableOfContents (gt .WordCount 400) }}
+        <div class="n50-sidebar-block">
+          <div class="n50-sidebar-label">SADRŽAJ</div>
+          {{ .TableOfContents }}
+        </div>
+      {{ end }}
+
+      <!-- Stats -->
+      <div class="n50-sidebar-block">
+        <div class="n50-sidebar-label">KLJUČNI PODACI</div>
+        <div class="n50-stat-item">
+          <div class="n50-stat-val">{{ .ReadingTime }}<span>min</span></div>
+          <div class="n50-stat-desc">ČITANJA</div>
+        </div>
+        <div class="n50-stat-item">
+          <div class="n50-stat-val">{{ .WordCount }}<span>+</span></div>
+          <div class="n50-stat-desc">RIJEČI</div>
+        </div>
+        <div class="n50-stat-item">
+          <div class="n50-stat-val">{{ .Date.Format "1" }}<span>/{{ .Date.Format "06" }}</span></div>
+          <div class="n50-stat-desc">DATUM</div>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      {{ with .Params.tags }}
+        <div class="n50-sidebar-block">
+          <div class="n50-sidebar-label">TAGOVI</div>
+          <div class="n50-tag-cloud">
+            {{ range . }}
+              <span class="n50-tag-pill">{{ . }}</span>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+
+      <!-- Related articles -->
+      {{ $related := first 3 (where (.Site.RegularPages.Related .) "Section" .Section) }}
+      {{ if $related }}
+        <div class="n50-sidebar-block">
+          <div class="n50-sidebar-label">SLIČNI ČLANCI</div>
+          <ul class="n50-sidebar-related">
+            {{ range $related }}
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+
+      <!-- Newsletter CTA -->
+      <div class="n50-sidebar-block">
+        <div class="n50-sidebar-cta">
+          <h4>Jedan email tjedno.</h4>
+          <p>Sažetak novih vodiča, konkretan zadatak i 3 linka. Bez spama.</p>
+          <a href="/#newsletter">Pretplati se →</a>
+        </div>
+      </div>
+
+    </aside>
+
+  </div><!-- /n50-art-body -->
+
+</div><!-- /n50-single -->
+{{ end }}

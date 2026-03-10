@@ -1,0 +1,26 @@
+{
+  "series": [
+    {
+      "name": "Bez AI alata",
+      "data": [
+        { "x": "Tjedan 1", "y": 480 },
+        { "x": "Tjedan 2", "y": 475 },
+        { "x": "Tjedan 3", "y": 490 },
+        { "x": "Tjedan 4", "y": 470 },
+        { "x": "Tjedan 5", "y": 485 },
+        { "x": "Tjedan 6", "y": 468 }
+      ]
+    },
+    {
+      "name": "S AI alatima",
+      "data": [
+        { "x": "Tjedan 1", "y": 480 },
+        { "x": "Tjedan 2", "y": 420 },
+        { "x": "Tjedan 3", "y": 375 },
+        { "x": "Tjedan 4", "y": 310 },
+        { "x": "Tjedan 5", "y": 270 },
+        { "x": "Tjedan 6", "y": 230 }
+      ]
+    }
+  ]
+}

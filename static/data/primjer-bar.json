@@ -1,0 +1,10 @@
+{
+  "data": [
+    { "label": "ChatGPT",    "value": 87 },
+    { "label": "Gemini",     "value": 64 },
+    { "label": "Copilot",    "value": 55 },
+    { "label": "Claude",     "value": 48 },
+    { "label": "Perplexity", "value": 31 },
+    { "label": "Llama",      "value": 22 }
+  ]
+}

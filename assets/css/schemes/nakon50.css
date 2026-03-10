@@ -1,0 +1,29 @@
+/* Nakon50 color scheme */
+/* Palette: Ivory bg, Amber accent (#B84E16), Navy (#163458), Charcoal (#1A1816) */
+:root {
+  --color-neutral: 255, 253, 249;
+  /* Neutral — Ivory / Stone / Charcoal */
+  --color-neutral-50:  245, 240, 232;
+  --color-neutral-100: 237, 231, 222;
+  --color-neutral-200: 228, 221, 211;
+  --color-neutral-300: 200, 192, 180;
+  --color-neutral-400: 165, 157, 148;
+  --color-neutral-500: 130, 122, 113;
+  --color-neutral-600: 97,  90,  82;
+  --color-neutral-700: 67,  62,  57;
+  --color-neutral-800: 44,  41,  37;
+  --color-neutral-900: 26,  24,  22;
+  --color-neutral-950: 13,  12,  11;
+  /* Primary — Amber (#B84E16) */
+  --color-primary-50:  252, 242, 235;
+  --color-primary-100: 249, 228, 210;
+  --color-primary-200: 243, 205, 168;
+  --color-primary-300: 236, 175, 119;
+  --color-primary-400: 220, 140, 80;
+  --color-primary-500: 202, 105, 43;
+  --color-primary-600: 184, 78,  22;
+  --color-primary-700: 147, 63,  18;
+  --color-primary-800: 110, 47,  13;
+  --color-primary-900: 73,  31,  9;
+  --color-primary-950: 37,  16,  4;
+}
