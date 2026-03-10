@@ -66,6 +66,8 @@ Sve organizacije trebaju ljude koji stoje iza svojih odluka — koji su tu i kad
 
 ---
 
+{{< d3chart id="ai-ne-moze-kompetencije" type="donut" datafile="/data/ai-ne-moze-kompetencije.json" title="Što čovjek donosi u suradnju s AI" label="LJUDSKE KOMPETENCIJE" subtitle="Relativni udio vrijednosti po tipu vještine (prema procjeni stručnjaka)" source="Nakon50 / sinteza istraživanja budućnosti rada" height="320" >}}
+
 ## Zašto je ovo dobra vijest — konkretno
 
 Sve gore navedeno nije apstraktna filozofija. To su stvari koje svakodnevno radiš na poslu:

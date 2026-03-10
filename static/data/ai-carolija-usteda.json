@@ -1,0 +1,9 @@
+{
+  "data": [
+    {"label": "Sažimanje dokumenta", "value": 45},
+    {"label": "Izrada strukture izvještaja", "value": 35},
+    {"label": "Pisanje emaila", "value": 25},
+    {"label": "Priprema za sastanak", "value": 20},
+    {"label": "Reformulacija teksta", "value": 15}
+  ]
+}

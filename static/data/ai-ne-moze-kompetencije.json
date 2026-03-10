@@ -1,0 +1,9 @@
+{
+  "data": [
+    {"label": "Kontekst i prosudba", "value": 28},
+    {"label": "Izgradnja povjerenja", "value": 22},
+    {"label": "Prepoznavanje iznimki", "value": 20},
+    {"label": "Odlučivanje pod neizvjesnošću", "value": 18},
+    {"label": "Odgovornost za ishod", "value": 12}
+  ]
+}

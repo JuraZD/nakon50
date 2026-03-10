@@ -62,6 +62,8 @@ Ukupno: **45-60 minuta tjedno**.
 
 Na godišnjoj razini: 52 sata strukturiranog, primijenjenog učenja. Za 6 mjeseci — realna kompetencija. Za 12 — možeš poučavati druge.
 
+{{< d3chart id="navika-ucenja-sustav" type="bar" datafile="/data/navika-ucenja-sustav.json" title="Efektivni sati učenja godišnje prema pristupu" label="SUSTAV UČENJA" subtitle="Ukupno sati aktivnog, primijenjenog učenja u 12 mjeseci" source="Procjena Nakon50 na bazi istraživanja o navikama" height="300" >}}
+
 ---
 
 ## Kako vezati sesiju uz postojeću rutinu

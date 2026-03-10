@@ -1,0 +1,9 @@
+{
+  "data": [
+    {"label": "ChatGPT (OpenAI)", "value": 72},
+    {"label": "Microsoft Copilot", "value": 58},
+    {"label": "Claude (Anthropic)", "value": 41},
+    {"label": "Gemini (Google)", "value": 38},
+    {"label": "Perplexity AI", "value": 24}
+  ]
+}

@@ -34,6 +34,8 @@ Daj to AI alatu. Gledaj što vraća. Popravi. Nauči.
 
 Jedan prompt koji je dao dobar rezultat? Spremi ga. To je početak tvoje prompt biblioteke.
 
+{{< d3chart id="gdje-krenuti-alati" type="hbar" datafile="/data/gdje-krenuti-alati.json" title="Najpopularniji AI alati za početnike" label="ISTRAŽIVANJE 2026" subtitle="Udio korisnika 50+ koji koriste alat barem tjedno (%)" source="Procjena Nakon50 na temelju javnih podataka o korištenju" height="260" >}}
+
 ## Što slijedi
 
 Na ovom portalu svakog tjedna izlazi jedan vodič i jedna kratka lekcija. Sve s konkretnim primjerima, promptima i predlošcima.

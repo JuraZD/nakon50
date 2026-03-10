@@ -40,6 +40,8 @@ Osobe koje su počele koristiti A.I. alate prije 12-18 mjeseci danas ih koriste 
 
 Ako počneš danas, za 6 mjeseci taj period imaš iza sebe. Ako čekaš godinu dana — počinješ od nule, ali s godinu dana većim rasponom između tebe i onih koji su krenuli.
 
+{{< d3chart id="pravo-vrijeme-krivulja" type="multiline" datafile="/data/pravo-vrijeme-krivulja.json" title="Razina vještine kroz vrijeme: početi sada vs. za godinu dana" label="KRIVULJA UČENJA" subtitle="Procjena razine kompetencije (0 = početnik, 100 = rutinska primjena)" source="Ilustrativni model, Nakon50" height="320" >}}
+
 ---
 
 ## Prednost iskustva: nešto što mlađi nemaju

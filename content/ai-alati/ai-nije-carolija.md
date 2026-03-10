@@ -126,6 +126,8 @@ Predloži mi strukturu izvještaja od 5-7 poglavlja, s kratkim opisom što ide u
 
 ---
 
+{{< d3chart id="ai-carolija-usteda" type="hbar" datafile="/data/ai-carolija-usteda.json" title="Prosječna ušteda vremena uz AI asistenciju" label="PRODUKTIVNOST" subtitle="Minuta ušteđenih po jednom zadatku (procjena na bazi uredskog rada)" source="Nakon50 / vlastita procjena" height="280" >}}
+
 ## Tri greške koje početnici rade
 
 **Greška 1: Preširok prompt**

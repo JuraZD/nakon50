@@ -37,6 +37,8 @@ Razlika u rezultatu je značajna. U prvom slučaju dobiješ predložak. U drugom
 
 ---
 
+{{< d3chart id="dopisi-tipovi" type="donut" datafile="/data/dopisi-tipovi.json" title="Koji tip dopisa se najčešće piše u organizacijama" label="ANALIZA KOMUNIKACIJE" subtitle="Udio prema frekvenciji u uredskom okruženju (%)" source="Procjena Nakon50" height="320" >}}
+
 ## 5 tipova dopisa s konkretnim promptovima
 
 ### Tip 1: Zahtjev za produljenje roka

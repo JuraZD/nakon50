@@ -1,0 +1,24 @@
+{
+  "series": [
+    {
+      "name": "Uobičajeni put (min)",
+      "data": [
+        {"x": "Čišćenje podataka", "y": 20},
+        {"x": "Formule", "y": 25},
+        {"x": "Formatiranje", "y": 15},
+        {"x": "Grafikon", "y": 15},
+        {"x": "Komentar", "y": 20}
+      ]
+    },
+    {
+      "name": "S AI pomoću (min)",
+      "data": [
+        {"x": "Čišćenje podataka", "y": 5},
+        {"x": "Formule", "y": 3},
+        {"x": "Formatiranje", "y": 5},
+        {"x": "Grafikon", "y": 4},
+        {"x": "Komentar", "y": 3}
+      ]
+    }
+  ]
+}

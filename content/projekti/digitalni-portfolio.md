@@ -28,6 +28,8 @@ Zašto to radi? Jer zapošljavanje, freelance posao i svaki razgovor o kompetenc
 
 ---
 
+{{< d3chart id="portfolio-tipovi" type="donut" datafile="/data/portfolio-tipovi.json" title="Koji tip portfolio sadržaja ima najveći utjecaj" label="PORTFELJ STRATEGIJA" subtitle="Relativni utjecaj na percepciju kompetentnosti (procjena)" source="Nakon50 / sinteza na bazi povratnih informacija poslodavaca" height="320" >}}
+
 ## Zašto je portfelj važan upravo sada
 
 Tržište rada se mijenja na dva načina koja direktno utječu na ljude s iskustvom u uredskom radu:

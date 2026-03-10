@@ -163,6 +163,8 @@ Rješenje: tvoji CSV-ovi vjerojatno koriste drugačiji separator. Promijeni `SEP
 
 ## Koliko vremena ušteđuješ
 
+{{< d3chart id="python-csv-usteda" type="hbar" datafile="/data/python-csv-usteda.json" title="Utrošeno vrijeme godišnje: ručno vs. Python" label="UŠTEDA VREMENA" subtitle="Ukupno minuta za 12 izvršavanja zadatka (jednom månadsvis)" source="Izračun: 12 × 45 min ručno / 12 × 8 sek Python" height="180" >}}
+
 Ako ovaj zadatak radiš jednom tjedno i traje ti 45 minuta ručno, skripta to rješava za 8-10 sekundi.
 
 Za godinu dana: **36+ sati vraćenih sebi**.

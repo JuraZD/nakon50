@@ -1,0 +1,9 @@
+{
+  "data": [
+    {"label": "Zahtjevi i molbe", "value": 31},
+    {"label": "Obavijesti o promjenama", "value": 24},
+    {"label": "Odgovori na upite", "value": 22},
+    {"label": "Zahvale i potvrde", "value": 13},
+    {"label": "Prigovori", "value": 10}
+  ]
+}

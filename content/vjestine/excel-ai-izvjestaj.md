@@ -14,6 +14,8 @@ Kombinacija Excela i A.I. mijenja taj omjer u tvoju korist — ne tako što zamj
 
 ---
 
+{{< d3chart id="excel-ai-usporedba" type="multiline" datafile="/data/excel-ai-usporedba.json" title="Minutaža po koracima: uobičajeni put vs. s AI pomoću" label="USPOREDBA VREMENA" subtitle="Minuta utrošenih po svakom koraku izrade izvještaja" source="Procjena Nakon50 na bazi uredskog rada" height="320" >}}
+
 ## Scenarij koji se ponavlja svaki tjedan
 
 Imaš tablicu s podacima: prodaja po regijama, troškovi po odjelima, prisutnost zaposlenika, evidencija predmeta, bilo što. Trebaš napraviti pregled s ključnim pokazateljima, grafikon i kratki komentar za upravu ili nadređene.
