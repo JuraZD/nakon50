@@ -27,12 +27,14 @@ nakon50/
 │   ├── ucenje/          # Učenje i razvoj
 │   ├── vjestine/        # Digitalne vještine
 │   ├── clanci/          # Unified lista svih članaka
+│   ├── o-projektu/        # "Što je Nakon50?", privatnost.md, uvjeti.md
 │   └── usluge/          # Usluge (konzultacije, radionice)
 ├── layouts/             # Hugo template overrideovi
-│   ├── _default/        # single.html — layout za članak
+│   ├── _default/        # single.html — layout za članak, list.html
 │   ├── clanci/          # list.html — unified prikaz svih članaka
+│   ├── o-projektu/      # list.html — full-width layout za sekciju
 │   ├── usluge/          # list.html — stranica usluga
-│   ├── partials/        # footer.html, logo.html, extend_head.html
+│   ├── partials/        # footer.html, logo.html, extend_head.html, cookie-banner.html
 │   └── shortcodes/      # d3chart.html — D3.js grafovi
 ├── static/
 │   ├── data/            # JSON podaci za D3 grafove
@@ -84,6 +86,23 @@ Shortcode za ugradnju interaktivnog grafa u članak:
 Podržani tipovi: `bar`, `hbar`, `line`, `multiline`, `pie`, `donut`, `scatter`
 
 JSON format podataka i primjeri nalaze se u `static/data/`.
+
+## GDPR i pravne stranice
+
+Sve pravne stranice su u `content/o-projektu/` s `_build: { list: never, render: always }` — vidljive su na URL-u ali ne pojavljuju se u listama i gredu članaka.
+
+| Stranica | URL | Fajl |
+|---|---|---|
+| Politika privatnosti i kolačića | `/o-projektu/privatnost/` | `content/o-projektu/privatnost.md` |
+| Uvjeti korištenja | `/o-projektu/uvjeti/` | `content/o-projektu/uvjeti.md` |
+
+Cookie banner (`layouts/partials/cookie-banner.html`) prikazuje se pri prvoj posjeti, koristi `localStorage` za pamćenje pristanka.
+
+**Placeholderi koje treba popuniti:**
+- `[UPIŠI IME I PREZIME]` i `[UPIŠI EMAIL]` u `privatnost.md`
+- `[IME I PREZIME]`, `[kratki opis]`, `[EMAIL]` u `o-projektu/_index.md` i `uvjeti.md`
+
+---
 
 ## Deploy
 
