@@ -4,3 +4,6 @@ resources/
 *.deb
 *.tmp.*
 slike/
+nakon50/
+.DS_Store
+Thumbs.db
