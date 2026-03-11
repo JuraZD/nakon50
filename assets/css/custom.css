@@ -237,7 +237,7 @@ body:has(#n50-homepage) header {
 
 /* ── Hero ──────────────────────────────────────────────────────────── */
 .n50-hero {
-  min-height: calc(100vh - 64px); /* minus Congo nav height */
+  min-height: 560px;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -246,7 +246,7 @@ body:has(#n50-homepage) header {
 }
 
 .n50-hero-left {
-  padding: 80px 60px 80px 72px; /* 72px = 6px edge + standard padding */
+  padding: 60px 60px 60px 72px; /* 72px = 6px edge + standard padding */
   display: flex;
   flex-direction: column;
   justify-content: center;
