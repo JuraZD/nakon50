@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{/* Sve rubrike osim statičnih stranica */}}
+{{ $exclude := slice "o-projektu" "usluge" "clanci" }}
+{{ $allArticles := where .Site.RegularPages "Section" "not in" $exclude }}
+{{ $sorted := $allArticles | first 200 }}
+
+<div class="n50-list-page">
+
+  <!-- Header -->
+  <header class="n50-list-header">
+    <div class="n50-section-label">PRETRAŽI I FILTRIRAJ</div>
+    <h1 class="n50-list-title">{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="n50-list-desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <!-- Članci grid (sve sekcije) -->
+  {{ $pages := .Paginate $sorted }}
+  {{ if $pages.Pages }}
+    <div class="n50-list-grid{{ if eq (len $pages.Pages) 1 }} one-up{{ end }}">
+      {{ range $i, $post := $pages.Pages }}
+        {{ $isFeatured := eq $i 0 }}
+        <a href="{{ $post.RelPermalink }}" class="n50-list-card{{ if $isFeatured }} featured{{ end }}">
+          <div class="n50-article-meta">
+            {{ with index $post.Params.categories 0 }}
+              <span class="n50-article-cat">{{ . | upper }}</span>
+            {{ end }}
+            <span>{{ $post.ReadingTime }} min čitanja</span>
+            <span class="n50-list-date">{{ $post.Date.Format "02.01.2006" }}</span>
+          </div>
+          <div class="n50-list-card-title">{{ $post.Title }}</div>
+          {{ with $post.Params.summary }}
+            <div class="n50-article-excerpt">{{ . }}</div>
+          {{ else }}
+            <div class="n50-article-excerpt">{{ $post.Summary | truncate 140 }}</div>
+          {{ end }}
+          <div class="n50-article-link">Pročitaj →</div>
+        </a>
+      {{ end }}
+    </div>
+
+    <!-- Paginacija -->
+    {{ if gt $pages.TotalPages 1 }}
+      <nav class="n50-pagination">
+        {{ if $pages.HasPrev }}
+          <a href="{{ $pages.Prev.URL }}" class="n50-page-btn">← Stariji</a>
+        {{ end }}
+        <span class="n50-page-info">{{ $pages.PageNumber }} / {{ $pages.TotalPages }}</span>
+        {{ if $pages.HasNext }}
+          <a href="{{ $pages.Next.URL }}" class="n50-page-btn">Noviji →</a>
+        {{ end }}
+      </nav>
+    {{ end }}
+
+  {{ else }}
+    <div class="n50-list-empty"><p>Članci uskoro.</p></div>
+  {{ end }}
+
+</div>
+{{ end }}

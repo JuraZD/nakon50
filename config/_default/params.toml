@@ -24,6 +24,9 @@ article.showWordCount = false
 article.showTableOfContents = true
 article.sharingLinks = []          # maknuti social share gumbe u startu
 
+# === TRAŽILICA ===
+enableSearch = true                # Congo search — generira /search/ stranicu
+
 # === NAVIGACIJA ===
 header.layout = "basic"            # "basic" | "fixed" | "fixed-fill"
 

@@ -1,34 +1,21 @@
 [[main]]
-  name = "AI alati"
-  pageRef = "ai-alati"
+  name = "Članci"
+  pageRef = "clanci"
   weight = 10
 
-[[main]]
-  name = "Vještine"
-  pageRef = "vjestine"
-  weight = 20
 
 [[main]]
-  name = "Karijera"
-  pageRef = "karijera"
+  name = "Usluge"
+  pageRef = "usluge"
   weight = 30
 
 [[main]]
-  name = "Projekti"
-  pageRef = "projekti"
-  weight = 40
-
-[[main]]
-  name = "Učenje"
-  pageRef = "ucenje"
-  weight = 50
-
-[[main]]
-  name = "O projektu"
-  pageRef = "o-projektu"
-  weight = 60
-
-[[main]]
-  name = "Pretplati se"
+  name = "Newsletter"
   url = "/#newsletter"
   weight = 99
+
+[[main]]
+  name = "Traži"
+  weight = 50
+  [main.params]
+    action = "search"

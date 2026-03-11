@@ -12,15 +12,13 @@
       </p>
     </div>
 
-    <!-- Kolona 2: Rubrike -->
+    <!-- Kolona 2: Navigacija -->
     <div class="n50-footer-col">
-      <div class="n50-footer-col-title">RUBRIKE</div>
+      <div class="n50-footer-col-title">NAVIGACIJA</div>
       <nav class="n50-footer-col-nav">
-        <a href="/ai-alati/" class="n50-footer-link">AI Alati</a>
-        <a href="/vjestine/" class="n50-footer-link">Vještine</a>
-        <a href="/karijera/" class="n50-footer-link">Karijera 50+</a>
-        <a href="/projekti/" class="n50-footer-link">Projekti</a>
-        <a href="/ucenje/" class="n50-footer-link">Učenje</a>
+        <a href="{{ "clanci/" | relURL }}" class="n50-footer-link">Članci</a>
+<a href="{{ "usluge/" | relURL }}" class="n50-footer-link">Usluge</a>
+        <a href="{{ "#newsletter" | relURL }}" class="n50-footer-link">Newsletter</a>
       </nav>
     </div>
 
@@ -42,7 +40,7 @@
     <div class="n50-footer-col">
       <div class="n50-footer-col-title">O PROJEKTU</div>
       <nav class="n50-footer-col-nav">
-        <a href="/o-projektu/" class="n50-footer-link">Što je Nakon50</a>
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-footer-link">Što je Nakon50</a>
         {{/* TODO: odkomentiraj kad stranica bude gotova
         <a href="/o-projektu/kontakt/" class="n50-footer-link">Kontakt</a>
         */}}

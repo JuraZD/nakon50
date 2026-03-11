@@ -17,7 +17,9 @@ theme = "congo"
   category = "categories"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]   # JSON treba Congo za search
+  home    = ["HTML", "RSS", "JSON"]   # JSON treba Congo za search
+  section = ["HTML", "RSS"]
+  page    = ["HTML"]
 
 [related]
   includeNewer = true

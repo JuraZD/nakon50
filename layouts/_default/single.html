@@ -61,7 +61,7 @@
           <div class="n50-sidebar-label">TAGOVI</div>
           <div class="n50-tag-cloud">
             {{ range . }}
-              <span class="n50-tag-pill">{{ . }}</span>
+              <a href="{{ printf "tags/%s/" (. | urlize) | relURL }}" class="n50-tag-pill">{{ . }}</a>
             {{ end }}
           </div>
         </div>

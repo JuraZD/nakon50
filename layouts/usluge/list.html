@@ -1,0 +1,194 @@
+{{ define "main" }}
+<div class="n50-usl-page">
+
+  <!-- Header -->
+  <header class="n50-usl-header">
+    <div class="n50-section-label">NAKON50 · USLUGE</div>
+    <h1 class="n50-usl-headline">
+      Odaberite<br>
+      <span class="n50-usl-headline-em">vaš korak</span>
+    </h1>
+    <p class="n50-usl-subline">
+      Tri paketa dizajnirana za ljude koji žele odmah primijeniti znanje —
+      bez tehničkog žargona i bez gubljenja vremena.
+    </p>
+  </header>
+
+  <!-- Cards grid -->
+  <div class="n50-usl-grid">
+
+    <!-- ── Paket 1: AI Start ── -->
+    <div class="n50-usl-card-wrap">
+      <div class="n50-usl-card">
+        <div class="n50-usl-badge-slot"></div>
+        <div class="n50-usl-icon">◎</div>
+        <h2 class="n50-usl-name">AI Start</h2>
+        <p class="n50-usl-subtitle">Za pojedince</p>
+        <div class="n50-usl-price-block">
+          <span class="n50-usl-price-amount">150 – 250</span>
+          <span class="n50-usl-price-meta">EUR · Jednokratno</span>
+        </div>
+        <div class="n50-usl-divider"></div>
+        <p class="n50-usl-desc">
+          Personalizirani uvod u AI alate prilagođen točno vašem poslu
+          i svakodnevnim zadacima.
+        </p>
+        <ul class="n50-usl-items">
+          <li>90-min konzultacija 1-1</li>
+          <li>Analiza vašeg radnog workflow-a</li>
+          <li>Lista 5–7 AI alata za vaš posao</li>
+          <li>Personalizirani prompt paket</li>
+          <li>Akcijski plan za sljedeća 4 tjedna</li>
+          <li>14 dana email podrška</li>
+        </ul>
+
+        <button class="n50-usl-toggle" onclick="n50ToggleExample(this)" aria-expanded="false">
+          Primjer iz prakse
+          <span class="n50-usl-toggle-arrow">▼</span>
+        </button>
+        <div class="n50-usl-example" role="region">
+          <div class="n50-usl-example-inner">
+            <p class="n50-usl-example-label">Scenarij</p>
+            <p class="n50-usl-example-scenario">
+              Vesna, referentica u javnoj upravi, 54 godine. Čuje svuda za ChatGPT, ne zna odakle krenuti. Svaki tjedan provede 4+ sata na pisanju standardnih dopisa i sažetaka.
+            </p>
+            <ul class="n50-usl-example-steps">
+              <li><span class="n50-usl-step-num">01</span> Na konzultaciji prolazimo kroz njene konkretne zadatke — koji dokumenti se ponavljaju, koje tablice priprema, kako komunicira s kolegama.</li>
+              <li><span class="n50-usl-step-num">02</span> Dobiva personalizirani set od 12 promptova za dopise, zapisnike i sažetke prilagođenih HR administrativnom jeziku.</li>
+              <li><span class="n50-usl-step-num">03</span> Preporuča se Claude za dokumente i Perplexity za istraživanje propisa — oba besplatna.</li>
+              <li><span class="n50-usl-step-num">04</span> Plan za 4 tjedna: jedan novi alat tjedno, s konkretnim zadatkom za svaki.</li>
+            </ul>
+            <div class="n50-usl-example-result">
+              <strong>Rezultat nakon 30 dana:</strong> Vesna priprema tjedni izvještaj za 40 min umjesto 3 sata. Promptove sprema u Word dokument i dijeli s kolegicom.
+            </div>
+          </div>
+        </div>
+
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta">Zakaži razgovor →</a>
+      </div>
+    </div>
+
+    <!-- ── Paket 2: AI Workflow Audit (featured) ── -->
+    <div class="n50-usl-card-wrap featured">
+      <div class="n50-usl-card">
+        <div class="n50-usl-badge-slot">
+          <span class="n50-usl-badge">Najpopularnije</span>
+        </div>
+        <div class="n50-usl-icon">◈</div>
+        <h2 class="n50-usl-name">AI Workflow Audit</h2>
+        <p class="n50-usl-subtitle">Za tim ili odjel</p>
+        <div class="n50-usl-price-block">
+          <span class="n50-usl-price-amount">500 – 800</span>
+          <span class="n50-usl-price-meta">EUR · Projekt</span>
+        </div>
+        <div class="n50-usl-divider"></div>
+        <p class="n50-usl-desc">
+          Sustavna analiza procesa u vašem timu — gdje AI može uštedjeti
+          najviše vremena i resursa.
+        </p>
+        <ul class="n50-usl-items">
+          <li>Pregled aktualnih procesa (anketa + 2 razgovora)</li>
+          <li>Pisani izvještaj s prioritetnim preporukama</li>
+          <li>Prijedlozi alata bez tehničkog žargona</li>
+          <li>Radionica 2–3h za tim (online ili uživo)</li>
+          <li>Predlošci i prompt biblioteka za tim</li>
+          <li>30 dana praćenje implementacije</li>
+        </ul>
+
+        <button class="n50-usl-toggle" onclick="n50ToggleExample(this)" aria-expanded="false">
+          Primjer iz prakse
+          <span class="n50-usl-toggle-arrow">▼</span>
+        </button>
+        <div class="n50-usl-example" role="region">
+          <div class="n50-usl-example-inner">
+            <p class="n50-usl-example-label">Scenarij</p>
+            <p class="n50-usl-example-scenario">
+              HR odjel srednje tvrtke, 6 ljudi. Onboarding novog zaposlenika traje 3 tjedna, puno je ručnog posla: emailovi, ispisi, upute koje netko tipka iznova svaki put.
+            </p>
+            <ul class="n50-usl-example-steps">
+              <li><span class="n50-usl-step-num">01</span> Anketa svim članovima tima: koje zadatke rade svaki tjedan, koliko traju, što se ponavlja.</li>
+              <li><span class="n50-usl-step-num">02</span> Pisani izvještaj identificira 3 uska grla: onboarding dokumenti, interni newsletteri, evidencija godišnjih odmora.</li>
+              <li><span class="n50-usl-step-num">03</span> Radionica s timom: live demo automatizacije onboardinga pomoću AI + Google Docs predložaka. Svi isprobaju za vlastiti slučaj.</li>
+              <li><span class="n50-usl-step-num">04</span> Tim dobiva gotove predloške i prompt paket za odmah koristiti — bez potrebe da sami istražuju alate.</li>
+            </ul>
+            <div class="n50-usl-example-result">
+              <strong>Rezultat:</strong> Onboarding s 3 tjedna sveden na 4 dana. Tim odabrao 2 alata za daljnji rad i ima internu prompt biblioteku koju nadopunjuju sami.
+            </div>
+          </div>
+        </div>
+
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta">Zatraži ponudu →</a>
+      </div>
+    </div>
+
+    <!-- ── Paket 3: Python za Ured ── -->
+    <div class="n50-usl-card-wrap">
+      <div class="n50-usl-card">
+        <div class="n50-usl-badge-slot"></div>
+        <div class="n50-usl-icon">◬</div>
+        <h2 class="n50-usl-name">Python za Ured</h2>
+        <p class="n50-usl-subtitle">Edukacija · 4 tjedna</p>
+        <div class="n50-usl-price-block">
+          <span class="n50-usl-price-amount">350 – 500</span>
+          <span class="n50-usl-price-meta">EUR · po osobi</span>
+        </div>
+        <div class="n50-usl-divider"></div>
+        <p class="n50-usl-desc">
+          Program koji pretvara svakodnevne Excel zadatke u automatizirane Python skripte — bez ikakvog programerskog predznanja.
+        </p>
+        <ul class="n50-usl-items">
+          <li>4 × 90-min live sesije (jedna tjedno)</li>
+          <li>Tjedan 1 — Python osnove + rad s CSV datotekama</li>
+          <li>Tjedan 2 — Automatsko čišćenje i spajanje tablica</li>
+          <li>Tjedan 3 — Generiranje izvještaja iz podataka</li>
+          <li>Tjedan 4 — Vaša osobna skripta za posao</li>
+          <li>Snimke sesija + materijali između susreta</li>
+          <li>Feedback na zadatke, pristup alumni grupi</li>
+        </ul>
+
+        <button class="n50-usl-toggle" onclick="n50ToggleExample(this)" aria-expanded="false">
+          Primjer iz prakse
+          <span class="n50-usl-toggle-arrow">▼</span>
+        </button>
+        <div class="n50-usl-example" role="region">
+          <div class="n50-usl-example-inner">
+            <p class="n50-usl-example-label">Scenarij</p>
+            <p class="n50-usl-example-scenario">
+              Marko, financijski analitičar, 51 godina. Svaki mjesec ručno kopira podatke iz 12 Excel datoteka u jedan zbirni izvještaj. Posao traje 6 sati, a povremeno napravi grešku pri kopiranju.
+            </p>
+            <ul class="n50-usl-example-steps">
+              <li><span class="n50-usl-step-num">T1</span> Instalacija Pythona, prvi kod: učitaj jednu Excel datoteku i ispiši podatke. Marko vidi da logika nije teža od Excel formula.</li>
+              <li><span class="n50-usl-step-num">T2</span> Skripta koja učita svih 12 datoteka odjednom, spoji ih i ukloni duplikate. Testira na stvarnim podacima s posla.</li>
+              <li><span class="n50-usl-step-num">T3</span> Automatski generirani PDF izvještaj s tablicom i grafikonom — spreman za slanje nadređenima jednim klikom.</li>
+              <li><span class="n50-usl-step-num">T4</span> Marko prilagođava skriptu svom formatu i dobiva finalni kod s komentarima koji može sam uređivati.</li>
+            </ul>
+            <div class="n50-usl-example-result">
+              <strong>Rezultat:</strong> Isti posao koji je trajao 6 sati sada traje 3 minute. Nula grešaka pri kopiranju. Isti pristup odmah primjenjuje na kvartalni izvještaj.
+            </div>
+          </div>
+        </div>
+
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta">Prijavi se →</a>
+      </div>
+    </div>
+
+  </div><!-- /n50-usl-grid -->
+
+  <!-- Footer note -->
+  <p class="n50-usl-footnote">
+    Niste sigurni koji paket odgovara vašoj situaciji?
+    <a href="{{ "o-projektu/" | relURL }}">Pošaljite poruku →</a>
+  </p>
+
+</div>
+
+<script>
+function n50ToggleExample(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+}
+</script>
+{{ end }}

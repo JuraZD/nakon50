@@ -1550,3 +1550,384 @@ body:has(#n50-homepage) header {
     padding-bottom: 48px;
   }
 }
+
+/* ── Tag cloud (Članci stranica) ────────────────────────────────── */
+.n50-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.n50-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--n50-f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--n50-charcoal);
+  border: 1px solid var(--n50-charcoal);
+  padding: 5px 11px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.n50-tag-pill:hover {
+  background: var(--n50-amber);
+  border-color: var(--n50-amber);
+  color: var(--n50-white);
+}
+.n50-tag-count {
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+/* ── Usluge stranica ─────────────────────────────────────────────── */
+.n50-usl-page {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 56px 24px 100px;
+}
+
+/* Header */
+.n50-usl-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.n50-usl-headline {
+  font-family: var(--n50-f-display);
+  font-size: clamp(42px, 7vw, 72px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--n50-charcoal);
+  margin: 12px 0 16px;
+  text-transform: uppercase;
+}
+.n50-usl-headline-em {
+  color: var(--n50-amber);
+}
+.n50-usl-subline {
+  max-width: 460px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--n50-navy-pale);
+}
+
+/* Grid */
+.n50-usl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Card wrapper */
+.n50-usl-card-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.n50-usl-card-wrap.featured {
+  position: relative;
+}
+.n50-usl-card-wrap.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--n50-amber);
+}
+
+/* Card */
+.n50-usl-card {
+  background: var(--n50-white);
+  border: 1px solid var(--n50-stone-light);
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.n50-usl-card:hover {
+  border-color: var(--n50-stone);
+  box-shadow: 0 2px 16px rgba(26,24,22,0.06);
+}
+.n50-usl-card-wrap.featured .n50-usl-card {
+  border-color: var(--n50-stone);
+  border-left: none;
+}
+
+/* Badge */
+.n50-usl-badge-slot {
+  min-height: 26px;
+  margin-bottom: 10px;
+}
+.n50-usl-badge {
+  display: inline-block;
+  font-family: var(--n50-f-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--n50-amber);
+  color: var(--n50-white);
+  padding: 3px 10px;
+}
+
+/* Icon */
+.n50-usl-icon {
+  font-size: 24px;
+  color: var(--n50-stone);
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+.n50-usl-card-wrap:hover .n50-usl-icon,
+.n50-usl-card-wrap.featured .n50-usl-icon {
+  color: var(--n50-amber);
+}
+
+/* Titles */
+.n50-usl-name {
+  font-family: var(--n50-f-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--n50-charcoal);
+  margin-bottom: 2px;
+}
+.n50-usl-subtitle {
+  font-family: var(--n50-f-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--n50-stone);
+  margin-bottom: 18px;
+}
+.n50-usl-card-wrap.featured .n50-usl-subtitle {
+  color: var(--n50-amber);
+}
+
+/* Price */
+.n50-usl-price-block {
+  margin-bottom: 18px;
+}
+.n50-usl-price-amount {
+  font-family: var(--n50-f-display);
+  font-size: clamp(26px, 3.5vw, 34px);
+  font-weight: 700;
+  color: var(--n50-charcoal);
+}
+.n50-usl-price-meta {
+  font-size: 13px;
+  color: var(--n50-stone);
+  margin-left: 6px;
+}
+
+/* Divider */
+.n50-usl-divider {
+  height: 1px;
+  background: var(--n50-stone-light);
+  margin-bottom: 18px;
+}
+.n50-usl-card-wrap.featured .n50-usl-divider {
+  background: rgba(184,78,22,0.2);
+}
+
+/* Description */
+.n50-usl-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--n50-navy-pale);
+  margin-bottom: 20px;
+}
+
+/* Feature list */
+.n50-usl-items {
+  list-style: none;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.n50-usl-items li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 7px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--n50-charcoal);
+  border-bottom: 1px solid var(--n50-stone-light);
+}
+.n50-usl-items li::before {
+  content: '✦';
+  color: var(--n50-stone);
+  font-size: 10px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.n50-usl-card-wrap.featured .n50-usl-items li::before {
+  color: var(--n50-amber);
+}
+
+/* Toggle */
+.n50-usl-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--n50-stone-light);
+  cursor: pointer;
+  padding: 11px 0;
+  font-family: var(--n50-f-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--n50-stone);
+  width: 100%;
+  text-align: left;
+  transition: color 0.15s;
+}
+.n50-usl-toggle:hover { color: var(--n50-amber); }
+.n50-usl-card-wrap.featured .n50-usl-toggle {
+  border-top-color: rgba(184,78,22,0.2);
+  color: rgba(184,78,22,0.5);
+}
+.n50-usl-card-wrap.featured .n50-usl-toggle:hover {
+  color: var(--n50-amber);
+}
+.n50-usl-toggle-arrow {
+  font-size: 9px;
+  transition: transform 0.3s;
+  margin-left: auto;
+  opacity: 0.6;
+}
+.n50-usl-toggle.open .n50-usl-toggle-arrow {
+  transform: rotate(180deg);
+}
+
+/* Example body */
+.n50-usl-example {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+.n50-usl-example.open {
+  max-height: 700px;
+  opacity: 1;
+}
+.n50-usl-example-inner {
+  padding: 18px 0 8px;
+}
+.n50-usl-example-label {
+  font-family: var(--n50-f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--n50-amber);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.n50-usl-example-scenario {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--n50-navy-pale);
+  margin-bottom: 14px;
+  padding-left: 12px;
+  border-left: 2px solid var(--n50-stone-light);
+}
+.n50-usl-card-wrap.featured .n50-usl-example-scenario {
+  border-left-color: rgba(184,78,22,0.3);
+}
+.n50-usl-example-steps {
+  list-style: none;
+  margin-bottom: 14px;
+}
+.n50-usl-example-steps li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 5px 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--n50-navy-pale);
+}
+.n50-usl-step-num {
+  font-family: var(--n50-f-mono);
+  font-size: 10px;
+  color: var(--n50-amber);
+  opacity: 0.7;
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 22px;
+}
+.n50-usl-example-result {
+  padding: 12px 14px;
+  background: rgba(184,78,22,0.05);
+  border-left: 2px solid rgba(184,78,22,0.3);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--n50-navy-pale);
+}
+.n50-usl-example-result strong {
+  color: var(--n50-amber);
+  font-weight: 600;
+}
+
+/* CTA */
+.n50-usl-cta {
+  display: block;
+  width: 100%;
+  padding: 13px 24px;
+  margin-top: 20px;
+  font-family: var(--n50-f-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--n50-charcoal);
+  background: transparent;
+  color: var(--n50-charcoal);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.n50-usl-cta:hover {
+  background: var(--n50-charcoal);
+  color: var(--n50-white);
+}
+.n50-usl-card-wrap.featured .n50-usl-cta {
+  background: var(--n50-amber);
+  color: var(--n50-white);
+  border-color: var(--n50-amber);
+  font-weight: 700;
+}
+.n50-usl-card-wrap.featured .n50-usl-cta:hover {
+  background: var(--n50-amber-pale);
+  border-color: var(--n50-amber-pale);
+}
+
+/* Footer note */
+.n50-usl-footnote {
+  text-align: center;
+  margin-top: 56px;
+  font-family: var(--n50-f-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--n50-stone);
+}
+.n50-usl-footnote a {
+  color: var(--n50-amber);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.n50-usl-footnote a:hover { opacity: 0.7; }
+
+/* Usluge responsive */
+@media (max-width: 680px) {
+  .n50-usl-page { padding: 40px 16px 64px; }
+  .n50-usl-header { margin-bottom: 40px; }
+  .n50-usl-card { padding: 28px 20px 24px; }
+  .n50-usl-grid { gap: 12px; }
+}
