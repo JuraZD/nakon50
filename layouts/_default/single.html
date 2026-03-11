@@ -50,7 +50,7 @@
           <div class="n50-stat-desc">RIJEČI</div>
         </div>
         <div class="n50-stat-item">
-          <div class="n50-stat-val">{{ .Date.Format "1" }}<span>/{{ .Date.Format "06" }}</span></div>
+          <div class="n50-stat-val">{{ .Date.Format "02" }}<span>.{{ .Date.Format "01." }}</span></div>
           <div class="n50-stat-desc">DATUM</div>
         </div>
       </div>
@@ -85,7 +85,7 @@
         <div class="n50-sidebar-cta">
           <h4>Jedan email tjedno.</h4>
           <p>Sažetak novih vodiča, konkretan zadatak i 3 linka. Bez spama.</p>
-          <a href="/#newsletter">Pretplati se →</a>
+          <a href="{{ "#newsletter" | absURL }}">Pretplati se →</a>
         </div>
       </div>
 

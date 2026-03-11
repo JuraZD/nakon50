@@ -126,7 +126,7 @@
   </section>
 
   <!-- ── Featured articles ────────────────────────────────────────── -->
-  {{ $posts := first 3 .Site.RegularPages }}
+  {{ $posts := first 3 (where .Site.RegularPages "Section" "!=" "o-projektu") }}
   {{ if $posts }}
   <section class="n50-section n50-fade-up" style="padding-top:0">
     <div class="n50-section-label">ISTAKNUTI VODIČI</div>

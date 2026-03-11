@@ -2,6 +2,9 @@
 title: "Politika privatnosti i kolačića"
 date: 2026-03-11
 description: "Kako Nakon50 prikuplja, koristi i štiti vaše osobne podatke — u skladu s GDPR-om."
+_build:
+  list: never
+  render: always
 ---
 
 ## Tko je voditelj obrade?
