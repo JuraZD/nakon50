@@ -770,6 +770,89 @@ body:has(#n50-homepage) header {
   color: var(--n50-stone);
 }
 
+/* ── O projektu (about) page ───────────────────────────────────────── */
+.n50-about-page { padding-bottom: 0; }
+.n50-about-header {
+  padding: 80px 66px 48px;
+  border-bottom: 1px solid var(--n50-stone-light);
+}
+.n50-about-title {
+  font-family: var(--n50-f-display);
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  color: var(--n50-charcoal);
+  margin: 12px 0 20px;
+  letter-spacing: -0.01em;
+}
+.n50-about-lead {
+  font-size: 18px;
+  color: var(--n50-navy-pale);
+  max-width: 640px;
+  line-height: 1.6;
+}
+.n50-about-body {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 64px 66px;
+}
+.n50-about-body h2 {
+  font-family: var(--n50-f-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--n50-charcoal);
+  margin: 48px 0 16px;
+  letter-spacing: -0.01em;
+}
+.n50-about-body h2:first-child { margin-top: 0; }
+.n50-about-body p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--n50-charcoal);
+  margin-bottom: 16px;
+}
+.n50-about-body p em {
+  font-style: italic;
+  color: var(--n50-navy);
+}
+.n50-about-body strong { color: var(--n50-charcoal); font-weight: 600; }
+.n50-about-body hr {
+  border: none;
+  border-top: 1px solid var(--n50-stone-light);
+  margin: 48px 0;
+}
+.n50-about-cta-strip {
+  background: var(--n50-navy);
+  padding: 56px 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.n50-about-cta-text {
+  font-family: var(--n50-f-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--n50-white);
+}
+.n50-about-cta-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.n50-btn-ghost-dark {
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.8);
+  font-family: var(--n50-f-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.n50-btn-ghost-dark:hover { border-color: var(--n50-amber); color: var(--n50-white); }
+@media (max-width: 768px) {
+  .n50-about-header { padding: 48px 24px 36px 30px; }
+  .n50-about-body { padding: 48px 24px 48px 30px; }
+  .n50-about-cta-strip { flex-direction: column; align-items: flex-start; padding: 40px 24px 40px 30px; }
+}
+
 /* ── Fade-up scroll animation ──────────────────────────────────────── */
 .n50-fade-up {
   opacity: 0;

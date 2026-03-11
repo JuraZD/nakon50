@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="n50-about-page">
+
+  <!-- Header -->
+  <header class="n50-about-header">
+    <div class="n50-section-label">O PROJEKTU</div>
+    <h1 class="n50-about-title">{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="n50-about-lead">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <!-- Content from _index.md -->
+  <div class="n50-about-body">
+    {{ .Content }}
+  </div>
+
+  <!-- CTA strip -->
+  <div class="n50-about-cta-strip">
+    <div class="n50-about-cta-text">Spreman za prvi korak?</div>
+    <div class="n50-about-cta-actions">
+      <a href="{{ "clanci/" | relURL }}" class="n50-btn-primary">Pregledaj vodiče →</a>
+      <a href="{{ "#newsletter" | absURL }}" class="n50-btn-ghost-dark">Pretplati se na newsletter</a>
+    </div>
+  </div>
+
+</div>
+{{ end }}
