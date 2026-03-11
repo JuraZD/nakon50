@@ -18,31 +18,30 @@
   <div class="n50-usl-grid">
 
     <!-- ── Paket 1: AI Start ── -->
-    <div class="n50-usl-card-wrap">
-      <div class="n50-usl-card">
-        <div class="n50-usl-badge-slot"></div>
-        <div class="n50-usl-icon">◎</div>
-        <h2 class="n50-usl-name">AI Start</h2>
-        <p class="n50-usl-subtitle">Za pojedince</p>
-        <div class="n50-usl-price-block">
-          <span class="n50-usl-price-amount">150 – 250</span>
-          <span class="n50-usl-price-meta">EUR · Jednokratno</span>
-        </div>
-        <div class="n50-usl-divider"></div>
-        <p class="n50-usl-desc">
-          Personalizirani uvod u AI alate prilagođen točno vašem poslu
-          i svakodnevnim zadacima.
-        </p>
-        <ul class="n50-usl-items">
-          <li>90-min konzultacija 1-1</li>
-          <li>Analiza vašeg radnog workflow-a</li>
-          <li>Lista 5–7 AI alata za vaš posao</li>
-          <li>Personalizirani prompt paket</li>
-          <li>Akcijski plan za sljedeća 4 tjedna</li>
-          <li>14 dana email podrška</li>
-        </ul>
-
-        <button class="n50-usl-toggle" onclick="n50ToggleExample(this)" aria-expanded="false">
+    <div class="n50-usl-card-wrap" onclick="n50SelectCard(this)" role="button" tabindex="0">
+      <div class="n50-usl-badge-slot"></div>
+      <div class="n50-usl-icon">◎</div>
+      <h2 class="n50-usl-name">AI Start</h2>
+      <p class="n50-usl-subtitle">Za pojedince</p>
+      <div class="n50-usl-price-block">
+        <span class="n50-usl-price-amount">150 – 250</span>
+        <span class="n50-usl-price-meta">EUR · Jednokratno</span>
+      </div>
+      <div class="n50-usl-divider"></div>
+      <p class="n50-usl-desc">
+        Personalizirani uvod u AI alate prilagođen točno vašem poslu
+        i svakodnevnim zadacima.
+      </p>
+      <ul class="n50-usl-items">
+        <li>90-min konzultacija 1-1</li>
+        <li>Analiza vašeg radnog workflow-a</li>
+        <li>Lista 5–7 AI alata za vaš posao</li>
+        <li>Personalizirani prompt paket</li>
+        <li>Akcijski plan za sljedeća 4 tjedna</li>
+        <li>14 dana email podrška</li>
+      </ul>
+      <div class="n50-usl-card-bottom">
+        <button class="n50-usl-toggle" onclick="n50ToggleExample(event, this)" aria-expanded="false">
           Primjer iz prakse
           <span class="n50-usl-toggle-arrow">▼</span>
         </button>
@@ -63,39 +62,37 @@
             </div>
           </div>
         </div>
-
-        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta">Zakaži razgovor →</a>
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta" onclick="event.stopPropagation()">Zakaži razgovor →</a>
       </div>
     </div>
 
     <!-- ── Paket 2: AI Workflow Audit (featured) ── -->
-    <div class="n50-usl-card-wrap featured">
-      <div class="n50-usl-card">
-        <div class="n50-usl-badge-slot">
-          <span class="n50-usl-badge">Najpopularnije</span>
-        </div>
-        <div class="n50-usl-icon">◈</div>
-        <h2 class="n50-usl-name">AI Workflow Audit</h2>
-        <p class="n50-usl-subtitle">Za tim ili odjel</p>
-        <div class="n50-usl-price-block">
-          <span class="n50-usl-price-amount">500 – 800</span>
-          <span class="n50-usl-price-meta">EUR · Projekt</span>
-        </div>
-        <div class="n50-usl-divider"></div>
-        <p class="n50-usl-desc">
-          Sustavna analiza procesa u vašem timu — gdje AI može uštedjeti
-          najviše vremena i resursa.
-        </p>
-        <ul class="n50-usl-items">
-          <li>Pregled aktualnih procesa (anketa + 2 razgovora)</li>
-          <li>Pisani izvještaj s prioritetnim preporukama</li>
-          <li>Prijedlozi alata bez tehničkog žargona</li>
-          <li>Radionica 2–3h za tim (online ili uživo)</li>
-          <li>Predlošci i prompt biblioteka za tim</li>
-          <li>30 dana praćenje implementacije</li>
-        </ul>
-
-        <button class="n50-usl-toggle" onclick="n50ToggleExample(this)" aria-expanded="false">
+    <div class="n50-usl-card-wrap featured n50-usl-selected" onclick="n50SelectCard(this)" role="button" tabindex="0">
+      <div class="n50-usl-badge-slot">
+        <span class="n50-usl-badge">Najpopularnije</span>
+      </div>
+      <div class="n50-usl-icon">◈</div>
+      <h2 class="n50-usl-name">AI Workflow Audit</h2>
+      <p class="n50-usl-subtitle">Za tim ili odjel</p>
+      <div class="n50-usl-price-block">
+        <span class="n50-usl-price-amount">500 – 800</span>
+        <span class="n50-usl-price-meta">EUR · Projekt</span>
+      </div>
+      <div class="n50-usl-divider"></div>
+      <p class="n50-usl-desc">
+        Sustavna analiza procesa u vašem timu — gdje AI može uštedjeti
+        najviše vremena i resursa.
+      </p>
+      <ul class="n50-usl-items">
+        <li>Pregled aktualnih procesa (anketa + 2 razgovora)</li>
+        <li>Pisani izvještaj s prioritetnim preporukama</li>
+        <li>Prijedlozi alata bez tehničkog žargona</li>
+        <li>Radionica 2–3h za tim (online ili uživo)</li>
+        <li>Predlošci i prompt biblioteka za tim</li>
+        <li>30 dana praćenje implementacije</li>
+      </ul>
+      <div class="n50-usl-card-bottom">
+        <button class="n50-usl-toggle" onclick="n50ToggleExample(event, this)" aria-expanded="false">
           Primjer iz prakse
           <span class="n50-usl-toggle-arrow">▼</span>
         </button>
@@ -116,37 +113,35 @@
             </div>
           </div>
         </div>
-
-        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta">Zatraži ponudu →</a>
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta" onclick="event.stopPropagation()">Zatraži ponudu →</a>
       </div>
     </div>
 
     <!-- ── Paket 3: Python za Ured ── -->
-    <div class="n50-usl-card-wrap">
-      <div class="n50-usl-card">
-        <div class="n50-usl-badge-slot"></div>
-        <div class="n50-usl-icon">◬</div>
-        <h2 class="n50-usl-name">Python za Ured</h2>
-        <p class="n50-usl-subtitle">Edukacija · 4 tjedna</p>
-        <div class="n50-usl-price-block">
-          <span class="n50-usl-price-amount">350 – 500</span>
-          <span class="n50-usl-price-meta">EUR · po osobi</span>
-        </div>
-        <div class="n50-usl-divider"></div>
-        <p class="n50-usl-desc">
-          Program koji pretvara svakodnevne Excel zadatke u automatizirane Python skripte — bez ikakvog programerskog predznanja.
-        </p>
-        <ul class="n50-usl-items">
-          <li>4 × 90-min live sesije (jedna tjedno)</li>
-          <li>Tjedan 1 — Python osnove + rad s CSV datotekama</li>
-          <li>Tjedan 2 — Automatsko čišćenje i spajanje tablica</li>
-          <li>Tjedan 3 — Generiranje izvještaja iz podataka</li>
-          <li>Tjedan 4 — Vaša osobna skripta za posao</li>
-          <li>Snimke sesija + materijali između susreta</li>
-          <li>Feedback na zadatke, pristup alumni grupi</li>
-        </ul>
-
-        <button class="n50-usl-toggle" onclick="n50ToggleExample(this)" aria-expanded="false">
+    <div class="n50-usl-card-wrap" onclick="n50SelectCard(this)" role="button" tabindex="0">
+      <div class="n50-usl-badge-slot"></div>
+      <div class="n50-usl-icon">◬</div>
+      <h2 class="n50-usl-name">Python za Ured</h2>
+      <p class="n50-usl-subtitle">Edukacija · 4 tjedna</p>
+      <div class="n50-usl-price-block">
+        <span class="n50-usl-price-amount">350 – 500</span>
+        <span class="n50-usl-price-meta">EUR · po osobi</span>
+      </div>
+      <div class="n50-usl-divider"></div>
+      <p class="n50-usl-desc">
+        Program koji pretvara svakodnevne Excel zadatke u automatizirane Python skripte — bez ikakvog programerskog predznanja.
+      </p>
+      <ul class="n50-usl-items">
+        <li>4 × 90-min live sesije (jedna tjedno)</li>
+        <li>Tjedan 1 — Python osnove + rad s CSV datotekama</li>
+        <li>Tjedan 2 — Automatsko čišćenje i spajanje tablica</li>
+        <li>Tjedan 3 — Generiranje izvještaja iz podataka</li>
+        <li>Tjedan 4 — Vaša osobna skripta za posao</li>
+        <li>Snimke sesija + materijali između susreta</li>
+        <li>Feedback na zadatke</li>
+      </ul>
+      <div class="n50-usl-card-bottom">
+        <button class="n50-usl-toggle" onclick="n50ToggleExample(event, this)" aria-expanded="false">
           Primjer iz prakse
           <span class="n50-usl-toggle-arrow">▼</span>
         </button>
@@ -167,8 +162,7 @@
             </div>
           </div>
         </div>
-
-        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta">Prijavi se →</a>
+        <a href="{{ "o-projektu/" | relURL }}" class="n50-usl-cta" onclick="event.stopPropagation()">Prijavi se →</a>
       </div>
     </div>
 
@@ -177,13 +171,19 @@
   <!-- Footer note -->
   <p class="n50-usl-footnote">
     Niste sigurni koji paket odgovara vašoj situaciji?
-    <a href="{{ "o-projektu/" | relURL }}">Pošaljite poruku →</a>
+    <a href="{{ "o-projektu/" | relURL }}" onclick="event.stopPropagation()">Pošaljite poruku →</a>
   </p>
 
 </div>
 
 <script>
-function n50ToggleExample(btn) {
+function n50SelectCard(wrap) {
+  document.querySelectorAll('.n50-usl-card-wrap').forEach(w => w.classList.remove('n50-usl-selected'));
+  wrap.classList.add('n50-usl-selected');
+}
+
+function n50ToggleExample(event, btn) {
+  event.stopPropagation();
   const body = btn.nextElementSibling;
   const isOpen = btn.classList.contains('open');
   btn.classList.toggle('open', !isOpen);

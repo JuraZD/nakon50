@@ -1604,9 +1604,7 @@ body:has(#n50-homepage) header {
   margin: 12px 0 16px;
   text-transform: uppercase;
 }
-.n50-usl-headline-em {
-  color: var(--n50-amber);
-}
+.n50-usl-headline-em { color: var(--n50-amber); }
 .n50-usl-subline {
   max-width: 460px;
   margin: 0 auto;
@@ -1615,53 +1613,52 @@ body:has(#n50-homepage) header {
   color: var(--n50-navy-pale);
 }
 
-/* Grid */
+/* Grid — desktop: 3 kolone sa subgrid poravnanjem */
 .n50-usl-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  align-items: stretch;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(9, auto);
+  column-gap: 20px;
+  row-gap: 0;
 }
 
-/* Card wrapper */
+/* Card wrapper — postaje grid kontejner za subgrid */
 .n50-usl-card-wrap {
-  display: flex;
-  flex-direction: column;
-}
-.n50-usl-card-wrap.featured {
-  position: relative;
-}
-.n50-usl-card-wrap.featured::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px; height: 100%;
-  background: var(--n50-amber);
-}
-
-/* Card */
-.n50-usl-card {
+  display: grid;
+  grid-row: span 9;
+  grid-template-rows: subgrid;
   background: var(--n50-white);
   border: 1px solid var(--n50-stone-light);
-  padding: 36px 32px 32px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  padding: 32px 28px 28px;
+  cursor: pointer;
   transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
 }
-.n50-usl-card:hover {
+.n50-usl-card-wrap:hover {
   border-color: var(--n50-stone);
   box-shadow: 0 2px 16px rgba(26,24,22,0.06);
 }
-.n50-usl-card-wrap.featured .n50-usl-card {
+
+/* Featured kartica */
+.n50-usl-card-wrap.featured {
   border-color: var(--n50-stone);
-  border-left: none;
+  border-left: 4px solid var(--n50-amber);
+}
+
+/* Odabrana kartica */
+.n50-usl-card-wrap.n50-usl-selected {
+  border-color: var(--n50-amber);
+  box-shadow: 0 4px 24px rgba(184,78,22,0.13);
+}
+.n50-usl-card-wrap.featured.n50-usl-selected {
+  border-left-width: 4px;
 }
 
 /* Badge */
 .n50-usl-badge-slot {
   min-height: 26px;
   margin-bottom: 10px;
+  align-self: start;
 }
 .n50-usl-badge {
   display: inline-block;
@@ -1678,15 +1675,15 @@ body:has(#n50-homepage) header {
 .n50-usl-icon {
   font-size: 24px;
   color: var(--n50-stone);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  align-self: start;
   transition: color 0.2s;
 }
 .n50-usl-card-wrap:hover .n50-usl-icon,
-.n50-usl-card-wrap.featured .n50-usl-icon {
-  color: var(--n50-amber);
-}
+.n50-usl-card-wrap.featured .n50-usl-icon,
+.n50-usl-card-wrap.n50-usl-selected .n50-usl-icon { color: var(--n50-amber); }
 
-/* Titles */
+/* Naslovi — subgrid osigurava poravnanje u istoj ravnini */
 .n50-usl-name {
   font-family: var(--n50-f-display);
   font-size: 28px;
@@ -1695,6 +1692,7 @@ body:has(#n50-homepage) header {
   text-transform: uppercase;
   color: var(--n50-charcoal);
   margin-bottom: 2px;
+  align-self: end;
 }
 .n50-usl-subtitle {
   font-family: var(--n50-f-mono);
@@ -1702,15 +1700,15 @@ body:has(#n50-homepage) header {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--n50-stone);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  align-self: start;
 }
-.n50-usl-card-wrap.featured .n50-usl-subtitle {
-  color: var(--n50-amber);
-}
+.n50-usl-card-wrap.featured .n50-usl-subtitle { color: var(--n50-amber); }
 
-/* Price */
+/* Cijena — poravnata u istoj ravnini */
 .n50-usl-price-block {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  align-self: start;
 }
 .n50-usl-price-amount {
   font-family: var(--n50-f-display);
@@ -1728,25 +1726,25 @@ body:has(#n50-homepage) header {
 .n50-usl-divider {
   height: 1px;
   background: var(--n50-stone-light);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  align-self: start;
 }
-.n50-usl-card-wrap.featured .n50-usl-divider {
-  background: rgba(184,78,22,0.2);
-}
+.n50-usl-card-wrap.featured .n50-usl-divider { background: rgba(184,78,22,0.2); }
 
-/* Description */
+/* Opis */
 .n50-usl-desc {
   font-size: 14px;
   line-height: 1.7;
   color: var(--n50-navy-pale);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  align-self: start;
 }
 
-/* Feature list */
+/* Lista stavki */
 .n50-usl-items {
   list-style: none;
-  margin-bottom: 24px;
-  flex: 1;
+  margin-bottom: 0;
+  align-self: start;
 }
 .n50-usl-items li {
   display: flex;
@@ -1765,8 +1763,15 @@ body:has(#n50-homepage) header {
   margin-top: 4px;
   flex-shrink: 0;
 }
-.n50-usl-card-wrap.featured .n50-usl-items li::before {
-  color: var(--n50-amber);
+.n50-usl-card-wrap.featured .n50-usl-items li::before,
+.n50-usl-card-wrap.n50-usl-selected .n50-usl-items li::before { color: var(--n50-amber); }
+
+/* Donji dio kartice (toggle + primjer + CTA) — nije u subgrid */
+.n50-usl-card-bottom {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  margin-top: 20px;
 }
 
 /* Toggle */
@@ -1793,33 +1798,24 @@ body:has(#n50-homepage) header {
   border-top-color: rgba(184,78,22,0.2);
   color: rgba(184,78,22,0.5);
 }
-.n50-usl-card-wrap.featured .n50-usl-toggle:hover {
-  color: var(--n50-amber);
-}
+.n50-usl-card-wrap.featured .n50-usl-toggle:hover { color: var(--n50-amber); }
 .n50-usl-toggle-arrow {
   font-size: 9px;
   transition: transform 0.3s;
   margin-left: auto;
   opacity: 0.6;
 }
-.n50-usl-toggle.open .n50-usl-toggle-arrow {
-  transform: rotate(180deg);
-}
+.n50-usl-toggle.open .n50-usl-toggle-arrow { transform: rotate(180deg); }
 
-/* Example body */
+/* Primjer iz prakse */
 .n50-usl-example {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.3s ease;
 }
-.n50-usl-example.open {
-  max-height: 700px;
-  opacity: 1;
-}
-.n50-usl-example-inner {
-  padding: 18px 0 8px;
-}
+.n50-usl-example.open { max-height: 700px; opacity: 1; }
+.n50-usl-example-inner { padding: 18px 0 8px; }
 .n50-usl-example-label {
   font-family: var(--n50-f-mono);
   font-size: 10px;
@@ -1838,13 +1834,8 @@ body:has(#n50-homepage) header {
   padding-left: 12px;
   border-left: 2px solid var(--n50-stone-light);
 }
-.n50-usl-card-wrap.featured .n50-usl-example-scenario {
-  border-left-color: rgba(184,78,22,0.3);
-}
-.n50-usl-example-steps {
-  list-style: none;
-  margin-bottom: 14px;
-}
+.n50-usl-card-wrap.featured .n50-usl-example-scenario { border-left-color: rgba(184,78,22,0.3); }
+.n50-usl-example-steps { list-style: none; margin-bottom: 14px; }
 .n50-usl-example-steps li {
   display: flex;
   gap: 10px;
@@ -1871,10 +1862,7 @@ body:has(#n50-homepage) header {
   line-height: 1.6;
   color: var(--n50-navy-pale);
 }
-.n50-usl-example-result strong {
-  color: var(--n50-amber);
-  font-weight: 600;
-}
+.n50-usl-example-result strong { color: var(--n50-amber); font-weight: 600; }
 
 /* CTA */
 .n50-usl-cta {
@@ -1893,10 +1881,7 @@ body:has(#n50-homepage) header {
   color: var(--n50-charcoal);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-.n50-usl-cta:hover {
-  background: var(--n50-charcoal);
-  color: var(--n50-white);
-}
+.n50-usl-cta:hover { background: var(--n50-charcoal); color: var(--n50-white); }
 .n50-usl-card-wrap.featured .n50-usl-cta {
   background: var(--n50-amber);
   color: var(--n50-white);
@@ -1917,17 +1902,25 @@ body:has(#n50-homepage) header {
   letter-spacing: 0.08em;
   color: var(--n50-stone);
 }
-.n50-usl-footnote a {
-  color: var(--n50-amber);
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
+.n50-usl-footnote a { color: var(--n50-amber); text-decoration: none; transition: opacity 0.2s; }
 .n50-usl-footnote a:hover { opacity: 0.7; }
 
-/* Usluge responsive */
+/* Usluge responsive — na mobilnom nema subgrida */
+@media (max-width: 860px) {
+  .n50-usl-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+  .n50-usl-card-wrap {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
+  }
+  .n50-usl-card-bottom { margin-top: 16px; }
+}
 @media (max-width: 680px) {
   .n50-usl-page { padding: 40px 16px 64px; }
   .n50-usl-header { margin-bottom: 40px; }
-  .n50-usl-card { padding: 28px 20px 24px; }
-  .n50-usl-grid { gap: 12px; }
+  .n50-usl-card-wrap { padding: 24px 20px 20px; }
 }
