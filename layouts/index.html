@@ -22,8 +22,8 @@
         i digitalne vještine — bez dramatiziranja i prodavanja magle.
       </p>
       <div class="n50-hero-actions">
-        <a href="/ai-alati/" class="n50-btn-primary">Počni od početka →</a>
-        <a href="/vjestine/" class="n50-btn-ghost">Pregledaj vodiče</a>
+        <a href="{{ "ai-alati/" | relURL }}" class="n50-btn-primary">Počni od početka →</a>
+        <a href="{{ "vjestine/" | relURL }}" class="n50-btn-ghost">Pregledaj vodiče</a>
       </div>
     </div>
 
@@ -50,14 +50,14 @@
       </div>
       <div class="n50-hero-stat">50<span>+</span></div>
       <div class="n50-hero-stat-label">GODINA ISKUSTVA · NOVA POGLAVLJA</div>
+      {{ $allTags := .Site.Taxonomies.tags.ByCount }}
+      {{ if $allTags }}
       <div class="n50-float-tags">
-        <span class="n50-tag amber">AI ALATI</span>
-        <span class="n50-tag">Python</span>
-        <span class="n50-tag">Excel</span>
-        <span class="n50-tag">LinkedIn</span>
-        <span class="n50-tag">Freelancing</span>
-        <span class="n50-tag">Obsidian</span>
+        {{ range $i, $tag := first 5 $allTags }}
+          <a href="{{ $tag.Page.RelPermalink }}" class="n50-tag{{ if eq $i 0 }} amber{{ end }}">{{ $tag.Name | upper }}</a>
+        {{ end }}
       </div>
+      {{ end }}
     </div>
   </section>
 
@@ -92,7 +92,6 @@
         <div class="n50-pillar-num">01</div>
         <div class="n50-pillar-title">AI Alati u Praksi</div>
         <div class="n50-pillar-sub">Prompti, workflow i konkretni primjeri iz uredskog rada.</div>
-        <div class="n50-pillar-tags">ChatGPT<br>Claude<br>Perplexity<br>Cursor</div>
       </div>
 
       <div class="n50-pillar">
@@ -100,7 +99,6 @@
         <div class="n50-pillar-num">02</div>
         <div class="n50-pillar-title">Vještine koje se Odmah Koriste</div>
         <div class="n50-pillar-sub">Excel, Python, automatizacija — kratke lekcije s primjerom.</div>
-        <div class="n50-pillar-tags">Excel<br>Python<br>CSV<br>Automatizacija</div>
       </div>
 
       <div class="n50-pillar">
@@ -108,7 +106,6 @@
         <div class="n50-pillar-num">03</div>
         <div class="n50-pillar-title">Karijera 50+ i Tržište Rada</div>
         <div class="n50-pillar-sub">Relevancija vještina, CV, LinkedIn i pregovaranje.</div>
-        <div class="n50-pillar-tags">LinkedIn<br>CV<br>Intervju<br>Freelancing</div>
       </div>
 
       <div class="n50-pillar">
@@ -116,7 +113,6 @@
         <div class="n50-pillar-num">04</div>
         <div class="n50-pillar-title">Projekti i Prihodi</div>
         <div class="n50-pillar-sub">Mali projekti, digitalni proizvodi i portfolio primjeri.</div>
-        <div class="n50-pillar-tags">Portfolio<br>Digitalni prod.<br>Side project<br>Prihodi</div>
       </div>
 
       <div class="n50-pillar">
@@ -124,7 +120,6 @@
         <div class="n50-pillar-num">05</div>
         <div class="n50-pillar-title">Sustavi i Navike</div>
         <div class="n50-pillar-sub">Second brain, Obsidian, plan učenja i održiv ritam.</div>
-        <div class="n50-pillar-tags">Obsidian<br>Notion<br>PKM<br>Disciplina</div>
       </div>
 
     </div>
@@ -186,7 +181,10 @@
     </div>
     <div>
       <form class="n50-newsletter-form" onsubmit="return false;">
-        <input type="text" placeholder="Tvoje ime">
+        <div class="n50-newsletter-name-row">
+          <input type="text" placeholder="Ime">
+          <input type="text" placeholder="Prezime">
+        </div>
         <input type="email" placeholder="Email adresa">
         <button type="submit">Pretplati se →</button>
         <div class="n50-newsletter-note">Bez spama. Odjava u jednom kliku. Privacy first.</div>

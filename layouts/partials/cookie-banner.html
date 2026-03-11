@@ -1,0 +1,24 @@
+<div id="n50-cookie-banner" class="n50-cookie-banner" role="dialog" aria-label="Obavijest o kolačićima" aria-live="polite">
+  <div class="n50-cookie-text">
+    <strong>Kolačići.</strong>
+    Koristimo samo nužne kolačiće za ispravno funkcioniranje sajta.
+    <a href="{{ "o-projektu/privatnost/" | relURL }}" class="n50-cookie-link">Politika privatnosti</a>
+  </div>
+  <div class="n50-cookie-actions">
+    <button class="n50-cookie-btn" onclick="n50AcceptCookies()">Razumijem</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  if (localStorage.getItem('n50_cookie_consent') === '1') {
+    document.getElementById('n50-cookie-banner').style.display = 'none';
+  }
+})();
+function n50AcceptCookies() {
+  localStorage.setItem('n50_cookie_consent', '1');
+  var b = document.getElementById('n50-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function() { b.style.display = 'none'; }, 300);
+}
+</script>
