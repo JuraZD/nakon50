@@ -94,6 +94,15 @@ header nav a {
   text-transform: uppercase;
 }
 
+/* Vertikalno poravnanje svih nav stavki */
+header nav > ul {
+  align-items: center !important;
+}
+header nav > ul > li {
+  display: flex;
+  align-items: center;
+}
+
 /* CTA gumb — zadnji element u navigaciji */
 header nav > ul > li:last-child > a {
   background: var(--n50-amber);
@@ -105,7 +114,9 @@ header nav > ul > li:last-child > a {
   text-transform: none;
   padding: 8px 18px;
   transition: background 0.2s;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 header nav > ul > li:last-child > a:hover {
   background: var(--n50-charcoal);
@@ -822,8 +833,10 @@ body:has(#n50-homepage) header {
   margin: 48px 0;
 }
 .n50-about-cta-strip {
+  max-width: 740px;
+  margin: 0 auto 80px;
+  padding: 40px 48px;
   background: var(--n50-navy);
-  padding: 56px 66px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -850,7 +863,7 @@ body:has(#n50-homepage) header {
 @media (max-width: 768px) {
   .n50-about-header { padding: 48px 24px 36px 30px; }
   .n50-about-body { padding: 48px 24px 48px 30px; }
-  .n50-about-cta-strip { flex-direction: column; align-items: flex-start; padding: 40px 24px 40px 30px; }
+  .n50-about-cta-strip { flex-direction: column; align-items: flex-start; padding: 32px 24px; margin-bottom: 48px; }
 }
 
 /* ── Fade-up scroll animation ──────────────────────────────────────── */
