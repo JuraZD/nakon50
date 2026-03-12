@@ -145,6 +145,5 @@ Sve ostalo — tečajevi, planovi, napredniji alati — dolazi iz tog prvog kora
 
 ---
 
-*Za konkretne prve zadatke pogledaj: [A.I. nije čarolija — ali jest dobar asistent za uredski posao](#) — vodič s 5 primjera koje možeš probati ovaj tjedan.*
+*Za konkretne prve zadatke pogledaj: [A.I. nije čarolija — ali jest dobar asistent za uredski posao](../../ai-alati/ai-nije-carolija/) — vodič s 5 primjera koje možeš probati ovaj tjedan.*
 
-*Preuzmite tjedni predložak za učenje: [predlozak-ucenje-3mj.pdf](#download)*

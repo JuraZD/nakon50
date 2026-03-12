@@ -113,6 +113,6 @@ I ta pozicija — za razliku od naivnosti ili paranoičnosti — traži akciju: 
 
 ---
 
-*Za početak: [A.I. nije čarolija — ali jest dobar asistent za uredski posao](#) — vodič s 5 konkretnih primjera i promptovima koje možeš odmah koristiti.*
+*Za početak: [A.I. nije čarolija — ali jest dobar asistent za uredski posao](../ai-nije-carolija/) — vodič s 5 konkretnih primjera i promptovima koje možeš odmah koristiti.*
 
-*Za širu perspektivu: [Zašto je baš sada pravo vrijeme za učenje — ne za godinu dana](#)*
+*Za širu perspektivu: [Zašto je baš sada pravo vrijeme za učenje — ne za godinu dana](../../ucenje/pravo-vrijeme-za-ucenje/)*

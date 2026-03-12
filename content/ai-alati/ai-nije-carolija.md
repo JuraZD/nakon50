@@ -147,4 +147,4 @@ Odaberi jedan email ili dokument koji imaš danas na stolu. Samo jedan. Probaj g
 
 Ne trebaš instalirati ništa posebno — ChatGPT je dostupan na [chat.openai.com](https://chat.openai.com) i besplatna verzija je sasvim dovoljna za početak.
 
-Za više primjera promptova prilagođenih uredskom radu u HR kontekstu, pogledaj naš vodič: [Kako izgraditi vlastitu prompt biblioteku za posao](#).
+Za više primjera promptova prilagođenih uredskom radu u HR kontekstu, pogledaj naš vodič: [ChatGPT za dopise i uredske dokumente](../chatgpt-za-dopise/).

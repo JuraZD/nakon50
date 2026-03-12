@@ -160,4 +160,4 @@ Uzmi jedan dopis koji imaš na redu danas ili sutra. Formuliraj prompt prema gor
 
 Za početnike: besplatna verzija ChatGPT-a (GPT-4o) potpuno je dovoljna za ovaj tip zadataka.
 
-Za one koji žele ići korak dalje: [Kako izgraditi vlastitu prompt biblioteku za posao](#) — vodič u kojemu pokazujemo kako organizirati promptove koje koristiš svaki tjedan.
+Za one koji žele ići korak dalje: Kako izgraditi vlastitu prompt biblioteku za posao — vodič u kojemu pokazujemo kako organizirati promptove koje koristiš svaki tjedan.

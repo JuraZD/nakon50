@@ -177,7 +177,7 @@ To nije metafora. To je sat i trideset tjedno koji možeš utrošiti na nešto �
 
 Ako ova skripta radi za tvoj slučaj — sjajno. Ako imaš CSV-ove s drugačijim stupcima, ako trebaš filtrirati podatke ili ako hoćeš rezultat direktno u Excel formatu (`.xlsx`) — to su nadogradnje koje pokrivamo u sljedećem vodiču:
 
-[Python za ured: automatsko generiranje izvještaja iz CSV-a s grafovima](#)
+Python za ured: automatsko generiranje izvještaja iz CSV-a s grafovima
 
 ---
 

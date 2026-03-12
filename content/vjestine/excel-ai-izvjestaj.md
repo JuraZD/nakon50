@@ -196,4 +196,4 @@ Ako koristiš Excel 2016 ili 2019 — sve iz ovog vodiča funkcionira, samo kori
 
 Uzmi jedan izvještaj koji radiš ručno svaki tjedan ili svaki mjesec. Identificiraj koji dio oduzima najviše vremena. Formuliraj pitanje za ChatGPT prema gornjim primjerima.
 
-Za napredak: [Python za ured: automatsko spajanje CSV izvještaja](#) — kad Excel više nije dovoljan za količinu podataka koju imaš.
+Za napredak: [Python za ured: automatsko spajanje CSV izvještaja](../python-csv-spajanje/) — kad Excel više nije dovoljan za količinu podataka koju imaš.

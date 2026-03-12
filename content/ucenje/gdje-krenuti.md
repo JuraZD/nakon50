@@ -40,7 +40,7 @@ Jedan prompt koji je dao dobar rezultat? Spremi ga. To je početak tvoje prompt 
 
 Na ovom portalu svakog tjedna izlazi jedan vodič i jedna kratka lekcija. Sve s konkretnim primjerima, promptima i predlošcima.
 
-Sljedeći korak: [Excel + AI: izrada izvještaja u 15 minuta](#) *(izlazi uskoro)*
+Sljedeći korak: [Excel + AI: izrada izvještaja u 15 minuta](../../vjestine/excel-ai-izvjestaj/)
 
 ---
 

@@ -178,6 +178,5 @@ Počni pisati. Odmah. Jedan paragraf o jednoj stvari koju si ovaj tjedan napravi
 
 ---
 
-*Za konkretne primjere projekata koji mogu ući u portfelj: [Python za ured: automatsko spajanje CSV izvještaja](#) i [Excel + A.I.: kako za 15 minuta napraviti izvještaj](#)*
+*Za konkretne primjere projekata koji mogu ući u portfelj: [Python za ured: automatsko spajanje CSV izvještaja](../../vjestine/python-csv-spajanje/) i [Excel + A.I.: kako za 15 minuta napraviti izvještaj](../../vjestine/excel-ai-izvjestaj/)*
 
-*Preuzmite predložak za prvu stranicu portfolija: [predlozak-portfolio.pdf](#download)*

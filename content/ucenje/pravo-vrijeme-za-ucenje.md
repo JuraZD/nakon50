@@ -135,4 +135,4 @@ Iskustvo koje imaš nije zastarjelo. Nije prepreka. Jedino čemu zapravo nedosta
 
 ---
 
-*Sljedeći korak: [A.I. nije čarolija — ali jest dobar asistent za uredski posao](#) — vodič s 5 konkretnih primjera i promptovima koje možeš kopirati odmah.*
+*Sljedeći korak: [A.I. nije čarolija — ali jest dobar asistent za uredski posao](../../ai-alati/ai-nije-carolija/) — vodič s 5 konkretnih primjera i promptovima koje možeš kopirati odmah.*
