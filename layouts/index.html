@@ -2,11 +2,11 @@
 <div id="n50-homepage">
 
   <!-- ── Announce bar ─────────────────────────────────────────────── -->
-  <div class="n50-announce">
-    <span>Novi vodič svaki tjedan &mdash; <strong>Excel + AI za uredske poslove</strong></span>
+  <a href="{{ "#newsletter" | absURL }}" class="n50-announce">
+    <span>Novi vodič svaki tjedan</span>
     <span class="n50-announce-sep">|</span>
     <span>Prijavi se na newsletter →</span>
-  </div>
+  </a>
 
   <!-- ── Hero ────────────────────────────────────────────────────── -->
   <section class="n50-hero">
@@ -180,19 +180,24 @@
       <p class="n50-newsletter-sub">Sažetak novih vodiča, jedan konkretan zadatak i 3 korisna linka — bez spama i bez prodavanja.</p>
     </div>
     <div>
-      <form class="n50-newsletter-form" onsubmit="return false;">
-        <div class="n50-newsletter-name-row">
-          <input type="text" placeholder="Ime">
-          <input type="text" placeholder="Prezime">
-        </div>
-        <input type="email" placeholder="Email adresa">
+      <form class="n50-newsletter-form" id="n50-newsletter-form" novalidate>
+        <input type="email" id="n50-nl-email" placeholder="Email adresa" required autocomplete="email">
         <label class="n50-newsletter-consent">
-          <input type="checkbox" required>
+          <input type="checkbox" id="n50-nl-consent" required>
           <span>Slažem se s <a href="{{ "o-projektu/privatnost/" | relURL }}" target="_blank">politikom privatnosti</a> i pristajem na primanje newslettera.</span>
         </label>
         <button type="submit">Pretplati se →</button>
-        <div class="n50-newsletter-note">Bez spama. Odjava u jednom kliku. Privola se može povući u bilo trenutku.</div>
+        <div class="n50-newsletter-note">Otvorit će se stranica za potvrdu. Bez spama. Odjava u jednom kliku.</div>
       </form>
+      <script>
+        document.getElementById('n50-newsletter-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var email = document.getElementById('n50-nl-email').value.trim();
+          var consent = document.getElementById('n50-nl-consent').checked;
+          if (!email || !consent) return;
+          window.open('https://nakon50.beehiiv.com/subscribe?email=' + encodeURIComponent(email), '_blank');
+        });
+      </script>
     </div>
   </section>
 

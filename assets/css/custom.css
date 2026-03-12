@@ -225,27 +225,31 @@ body:has(#n50-homepage) header {
   font-size: 12px;
   letter-spacing: 0.05em;
   text-align: center;
-  padding: 10px 60px;
+  padding: 10px 60px 10px 66px; /* 66px = 6px edge bar + 60px */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 24px;
-  padding-left: 66px; /* 6px edge bar + 60px */
+  text-decoration: none;
+  transition: opacity 0.2s;
 }
+.n50-announce:hover { opacity: 0.85; }
 .n50-announce strong { color: var(--n50-amber-pale); }
 .n50-announce-sep { color: var(--n50-stone); opacity: 0.4; }
 
 /* ── Hero ──────────────────────────────────────────────────────────── */
 .n50-hero {
+  background: var(--n50-ivory); /* ivory fallback za prazan gornji desni cell */
   min-height: 560px;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 1fr; /* spacer red + sadržaj */
   gap: 0;
-  align-items: stretch;
 }
 
 .n50-hero-left {
+  grid-row: 1 / -1; /* proteže se kroz oba reda */
   padding: 60px 60px 60px 72px; /* 72px = 6px edge + standard padding */
   display: flex;
   flex-direction: column;
@@ -325,6 +329,8 @@ body:has(#n50-homepage) header {
 
 /* Hero right panel */
 .n50-hero-right {
+  grid-row: 2; /* počinje od drugog reda — vrh poravnat s tagom */
+  grid-column: 2;
   background: var(--n50-navy);
   position: relative;
   display: flex;
@@ -332,7 +338,6 @@ body:has(#n50-homepage) header {
   justify-content: flex-end;
   padding: 48px;
   overflow: hidden;
-  min-height: 600px;
 }
 .n50-hero-right::before {
   content: '';
@@ -726,6 +731,18 @@ body:has(#n50-homepage) header {
   letter-spacing: 0.04em;
 }
 
+/* Beehiiv embed */
+.n50-newsletter-embed-wrap {
+  width: 100%;
+}
+.n50-newsletter-embed-wrap .beehiiv-embed {
+  width: 100%;
+  max-width: 100%;
+  height: 375px;
+  border: none;
+  display: block;
+}
+
 /* ── Cookie banner ─────────────────────────────────────────────────── */
 .n50-cookie-banner {
   position: fixed;
@@ -896,12 +913,19 @@ body:has(#n50-homepage) header {
   /* Homepage */
   .n50-hero {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     min-height: auto;
   }
   .n50-hero-left {
+    grid-row: auto;
     padding: 48px 24px 48px 30px; /* 6px edge + 24px */
   }
-  .n50-hero-right { min-height: 280px; padding: 32px 24px; }
+  .n50-hero-right {
+    grid-row: auto;
+    grid-column: auto;
+    min-height: 280px;
+    padding: 32px 24px;
+  }
   .n50-hero-title { font-size: clamp(52px, 12vw, 80px); }
 
   .n50-pillars { grid-template-columns: 1fr 1fr; }
@@ -1812,11 +1836,13 @@ body:has(#n50-homepage) header {
   display: grid;
   grid-row: span 9;
   grid-template-rows: subgrid;
-  background: var(--n50-white);
+  background: var(--n50-ivory);
   border: 1px solid var(--n50-stone-light);
   padding: 32px 28px 28px;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.25s, box-shadow 0.3s,
+              transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.25s;
   outline: none;
 }
 .n50-usl-card-wrap:hover {
@@ -1830,13 +1856,21 @@ body:has(#n50-homepage) header {
   border-left: 4px solid var(--n50-amber);
 }
 
-/* Odabrana kartica */
+/* Odabrana kartica — lift + inset amber border */
 .n50-usl-card-wrap.n50-usl-selected {
   border-color: var(--n50-amber);
-  box-shadow: 0 4px 24px rgba(184,78,22,0.13);
+  box-shadow: inset 0 0 0 2px var(--n50-amber),
+              0 8px 40px rgba(184, 78, 22, 0.18);
+  transform: translateY(-6px);
 }
 .n50-usl-card-wrap.featured.n50-usl-selected {
   border-left-width: 4px;
+}
+
+/* Prigušene kartice pri korisnikovom odabiru */
+.n50-usl-card-wrap.n50-usl-dimmed {
+  opacity: 0.7;
+  transform: scale(0.988);
 }
 
 /* Badge */
@@ -1856,17 +1890,27 @@ body:has(#n50-homepage) header {
   padding: 3px 10px;
 }
 
-/* Icon */
+/* Icon — SVG line-art icons */
 .n50-usl-icon {
-  font-size: 24px;
-  color: var(--n50-stone);
-  margin-bottom: 14px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
   align-self: start;
-  transition: color 0.2s;
+  color: var(--n50-stone);
+  transition: color 0.25s;
+}
+.n50-usl-icon svg {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.n50-usl-card-wrap.featured .n50-usl-icon {
+  color: var(--n50-charcoal);
 }
 .n50-usl-card-wrap:hover .n50-usl-icon,
-.n50-usl-card-wrap.featured .n50-usl-icon,
-.n50-usl-card-wrap.n50-usl-selected .n50-usl-icon { color: var(--n50-amber); }
+.n50-usl-card-wrap.n50-usl-selected .n50-usl-icon {
+  color: var(--n50-amber);
+}
 
 /* Naslovi — subgrid osigurava poravnanje u istoj ravnini */
 .n50-usl-name {
@@ -1895,17 +1939,37 @@ body:has(#n50-homepage) header {
   margin-bottom: 16px;
   align-self: start;
 }
+.n50-usl-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
 .n50-usl-price-amount {
   font-family: var(--n50-f-display);
-  font-size: clamp(26px, 3.5vw, 34px);
+  font-size: clamp(26px, 3vw, 36px);
   font-weight: 700;
   color: var(--n50-charcoal);
+  line-height: 1;
 }
-.n50-usl-price-meta {
+.n50-usl-price-currency {
+  font-family: var(--n50-f-mono);
   font-size: 13px;
+  font-weight: 700;
   color: var(--n50-stone);
-  margin-left: 6px;
+  letter-spacing: 0.08em;
+  align-self: flex-end;
+  margin-bottom: 3px;
 }
+.n50-usl-price-detail {
+  display: flex;
+  gap: 6px;
+  font-family: var(--n50-f-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+.n50-usl-price-period { color: var(--n50-stone); }
+.n50-usl-price-tax { color: var(--n50-amber); opacity: 0.85; }
 
 /* Divider */
 .n50-usl-divider {
@@ -1920,7 +1984,7 @@ body:has(#n50-homepage) header {
 .n50-usl-desc {
   font-size: 14px;
   line-height: 1.7;
-  color: var(--n50-navy-pale);
+  color: rgba(26, 24, 22, 0.65);
   margin-bottom: 18px;
   align-self: start;
 }
@@ -2014,7 +2078,7 @@ body:has(#n50-homepage) header {
   font-size: 13px;
   font-style: italic;
   line-height: 1.65;
-  color: var(--n50-navy-pale);
+  color: rgba(26, 24, 22, 0.6);
   margin-bottom: 14px;
   padding-left: 12px;
   border-left: 2px solid var(--n50-stone-light);
@@ -2028,7 +2092,7 @@ body:has(#n50-homepage) header {
   padding: 5px 0;
   font-size: 13px;
   line-height: 1.55;
-  color: var(--n50-navy-pale);
+  color: rgba(26, 24, 22, 0.6);
 }
 .n50-usl-step-num {
   font-family: var(--n50-f-mono);
@@ -2045,7 +2109,7 @@ body:has(#n50-homepage) header {
   border-left: 2px solid rgba(184,78,22,0.3);
   font-size: 13px;
   line-height: 1.6;
-  color: var(--n50-navy-pale);
+  color: rgba(26, 24, 22, 0.65);
 }
 .n50-usl-example-result strong { color: var(--n50-amber); font-weight: 600; }
 
@@ -2079,16 +2143,31 @@ body:has(#n50-homepage) header {
 }
 
 /* Footer note */
-.n50-usl-footnote {
-  text-align: center;
+.n50-usl-footer-notes {
   margin-top: 56px;
+  text-align: center;
+}
+.n50-usl-footnote {
   font-family: var(--n50-f-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
   color: var(--n50-stone);
+  margin-bottom: 0;
 }
 .n50-usl-footnote a { color: var(--n50-amber); text-decoration: none; transition: opacity 0.2s; }
 .n50-usl-footnote a:hover { opacity: 0.7; }
+.n50-usl-pdv-note {
+  font-family: var(--n50-f-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--n50-stone);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--n50-stone-light);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Usluge responsive — na mobilnom nema subgrida */
 @media (max-width: 860px) {

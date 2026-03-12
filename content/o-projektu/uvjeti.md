@@ -84,6 +84,6 @@ Na ove uvjete primjenjuje se pravo **Republike Hrvatske**. Za eventualne sporove
 
 ## 10. Kontakt
 
-Za pitanja vezana uz uvjete korištenja: **[UPIŠI EMAIL]**
+Za pitanja vezana uz uvjete korištenja: **dalmatiaevents365@gmail.com**
 
 *Zadnja izmjena: 11. ožujka 2026.*

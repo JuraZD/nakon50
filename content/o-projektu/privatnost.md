@@ -12,8 +12,8 @@ _build:
 **Nakon50**
 Voditelj obrade osobnih podataka je autor ovog projekta:
 
-- **Ime i prezime:** [UPIŠI IME I PREZIME]
-- **Email:** [UPIŠI EMAIL]
+- **Ime i prezime:** Administrator
+- **Email:** dalmatiaevents365@gmail.com
 - **Web:** https://JuraZD.github.io/nakon50/
 
 Za sva pitanja vezana uz osobne podatke možete nas kontaktirati na gornju email adresu.
@@ -61,7 +61,7 @@ Kao ispitanik imate pravo:
 - **Prigovora** — prigovoriti obradi podataka
 - **Povlačenja privole** — u bilo kojem trenutku, bez posljedica (odjava iz newslettera)
 
-Zahtjeve šaljite na: **[UPIŠI EMAIL]**
+Zahtjeve šaljite na: **dalmatiaevents365@gmail.com**
 
 Odgovaramo u roku od 30 dana.
 

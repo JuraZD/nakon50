@@ -37,11 +37,11 @@ Nakon50 nastao je iz jedne uvjerenja: iskustvo nije zapreka za učenje novih teh
 
 ## Tko stoji iza projekta
 
-Nakon50 vodi **[IME I PREZIME]** — [kratki opis: npr. konzultant / edukator / bivši [struka] s N godina iskustva].
+Nakon50 vodi **Administrator** — konzultant i edukator s iskustvom u digitalnoj transformaciji.
 
 Projekt je nastao iz osobnog iskustva s digitalnom tranzicijom i uvjerenja da domaće tržište nema resursa koji iskreno i konkretno pomažu zaposlenima 50+ da savladaju nove alate.
 
-Za pitanja, suradnje i konzultacije: [EMAIL]
+Za pitanja, suradnje i konzultacije: dalmatiaevents365@gmail.com
 
 ---
 

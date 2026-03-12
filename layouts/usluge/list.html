@@ -20,12 +20,24 @@
     <!-- ── Paket 1: AI Start ── -->
     <div class="n50-usl-card-wrap" onclick="n50SelectCard(this)" role="button" tabindex="0">
       <div class="n50-usl-badge-slot"></div>
-      <div class="n50-usl-icon">◎</div>
+      <div class="n50-usl-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="16" cy="13" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 36c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M31 5l-2.5 7.5h4.5l-4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <h2 class="n50-usl-name">AI Start</h2>
       <p class="n50-usl-subtitle">Za pojedince</p>
       <div class="n50-usl-price-block">
-        <span class="n50-usl-price-amount">150 – 250</span>
-        <span class="n50-usl-price-meta">EUR · Jednokratno</span>
+        <div class="n50-usl-price-row">
+          <span class="n50-usl-price-amount">150 – 250</span>
+          <span class="n50-usl-price-currency">EUR</span>
+        </div>
+        <div class="n50-usl-price-detail">
+          <span class="n50-usl-price-period">Jednokratno</span>
+          <span class="n50-usl-price-tax">&middot; bez PDV-a</span>
+        </div>
       </div>
       <div class="n50-usl-divider"></div>
       <p class="n50-usl-desc">
@@ -71,12 +83,25 @@
       <div class="n50-usl-badge-slot">
         <span class="n50-usl-badge">Najpopularnije</span>
       </div>
-      <div class="n50-usl-icon">◈</div>
+      <div class="n50-usl-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="7" cy="32" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="33" cy="32" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M17 11L10 29M23 11L30 29M11 32H29" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
       <h2 class="n50-usl-name">AI Workflow Audit</h2>
       <p class="n50-usl-subtitle">Za tim ili odjel</p>
       <div class="n50-usl-price-block">
-        <span class="n50-usl-price-amount">500 – 800</span>
-        <span class="n50-usl-price-meta">EUR · Projekt</span>
+        <div class="n50-usl-price-row">
+          <span class="n50-usl-price-amount">500 – 800</span>
+          <span class="n50-usl-price-currency">EUR</span>
+        </div>
+        <div class="n50-usl-price-detail">
+          <span class="n50-usl-price-period">Projekt</span>
+          <span class="n50-usl-price-tax">&middot; bez PDV-a</span>
+        </div>
       </div>
       <div class="n50-usl-divider"></div>
       <p class="n50-usl-desc">
@@ -120,12 +145,28 @@
     <!-- ── Paket 3: Python za Ured ── -->
     <div class="n50-usl-card-wrap" onclick="n50SelectCard(this)" role="button" tabindex="0">
       <div class="n50-usl-badge-slot"></div>
-      <div class="n50-usl-icon">◬</div>
+      <div class="n50-usl-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="4" y="8" width="32" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="4" y1="17" x2="36" y2="17" stroke="currentColor" stroke-width="1"/>
+          <circle cx="10" cy="12.5" r="1.5" fill="currentColor"/>
+          <circle cx="15" cy="12.5" r="1.5" fill="currentColor"/>
+          <circle cx="20" cy="12.5" r="1.5" fill="currentColor"/>
+          <path d="M10 25l4 2.5-4 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="17" y1="27.5" x2="26" y2="27.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
       <h2 class="n50-usl-name">Python za Ured</h2>
       <p class="n50-usl-subtitle">Edukacija · 4 tjedna</p>
       <div class="n50-usl-price-block">
-        <span class="n50-usl-price-amount">350 – 500</span>
-        <span class="n50-usl-price-meta">EUR · po osobi</span>
+        <div class="n50-usl-price-row">
+          <span class="n50-usl-price-amount">350 – 500</span>
+          <span class="n50-usl-price-currency">EUR</span>
+        </div>
+        <div class="n50-usl-price-detail">
+          <span class="n50-usl-price-period">po osobi</span>
+          <span class="n50-usl-price-tax">&middot; bez PDV-a</span>
+        </div>
       </div>
       <div class="n50-usl-divider"></div>
       <p class="n50-usl-desc">
@@ -168,18 +209,30 @@
 
   </div><!-- /n50-usl-grid -->
 
-  <!-- Footer note -->
-  <p class="n50-usl-footnote">
-    Niste sigurni koji paket odgovara vašoj situaciji?
-    <a href="{{ "o-projektu/" | relURL }}" onclick="event.stopPropagation()">Pošaljite poruku →</a>
-  </p>
+  <!-- Footer notes -->
+  <div class="n50-usl-footer-notes">
+    <p class="n50-usl-footnote">
+      Niste sigurni koji paket odgovara vašoj situaciji?
+      <a href="{{ "o-projektu/" | relURL }}" onclick="event.stopPropagation()">Pošaljite poruku →</a>
+    </p>
+    <p class="n50-usl-pdv-note">
+      Temeljem čl. 90. st. 1. Zakona o PDV-u (NN 152/24), nismo u sustavu PDV-a. Prikazane cijene su konačne.
+    </p>
+  </div>
 
 </div>
 
 <script>
+let n50UserSelected = false;
+
 function n50SelectCard(wrap) {
-  document.querySelectorAll('.n50-usl-card-wrap').forEach(w => w.classList.remove('n50-usl-selected'));
+  n50UserSelected = true;
+  document.querySelectorAll('.n50-usl-card-wrap').forEach(w => {
+    w.classList.remove('n50-usl-selected');
+    w.classList.toggle('n50-usl-dimmed', w !== wrap);
+  });
   wrap.classList.add('n50-usl-selected');
+  wrap.classList.remove('n50-usl-dimmed');
 }
 
 function n50ToggleExample(event, btn) {
