@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code za 5 Minuta – Nakon50</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Instrument+Sans:ital,wght@0,400;0,600;1,400&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Varijable ─────────────────────────────────────────────────── */
+    :root {
+      --amber:       #B84E16;
+      --amber-pale:  #DC8C50;
+      --navy:        #163458;
+      --navy-pale:   #3C5A80;
+      --charcoal:    #1A1816;
+      --ivory:       #F5F0E8;
+      --stone:       #C8C0B4;
+      --stone-light: #E4DDD3;
+      --white:       #FFFDF9;
+      --f-display:   'Big Shoulders Display', sans-serif;
+      --f-body:      'Instrument Sans', sans-serif;
+      --f-mono:      'Geist Mono', monospace;
+    }
+
+    /* ── Reset & osnova ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 11pt; }
+    body {
+      font-family: var(--f-body);
+      color: var(--charcoal);
+      background: var(--white);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Print stranice ────────────────────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 20px;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    @media print {
+      html, body { margin: 0; padding: 0; background: white; }
+      .page { margin: 0; page-break-after: always; box-shadow: none; }
+      .page:last-child { page-break-after: avoid; }
+      @page { size: A4; margin: 0; }
+      .no-print { display: none; }
+    }
+    @media screen {
+      body { background: #d0cac0; padding: 20px 0 40px; }
+      .page { box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
+    }
+
+    /* ── Print gumb (samo na ekranu) ───────────────────────────────── */
+    .print-bar {
+      width: 210mm;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .print-btn {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 8px 20px;
+      background: var(--amber);
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .print-btn:hover { background: var(--navy); }
+
+    /* ── Shared komponente ─────────────────────────────────────────── */
+    .page-header-bar {
+      background: var(--charcoal);
+      color: var(--stone);
+      font-family: var(--f-mono);
+      font-size: 9pt;
+      letter-spacing: 0.1em;
+      padding: 9px 20mm;
+      text-align: center;
+    }
+    .page-footer-bar {
+      background: var(--amber);
+      color: white;
+      font-family: var(--f-body);
+      font-weight: 600;
+      font-size: 10pt;
+      letter-spacing: 0.04em;
+      padding: 10px 20mm;
+      text-align: center;
+      margin-top: auto;
+    }
+    .amber-edge {
+      position: absolute;
+      left: 0; top: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--amber);
+    }
+    .chapter-num-bg {
+      font-family: var(--f-display);
+      font-weight: 900;
+      font-size: 120pt;
+      color: var(--stone-light);
+      line-height: 1;
+      position: absolute;
+      right: 18mm;
+      top: 22mm;
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+    .section-label {
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--stone-light);
+    }
+    .divider { height: 1px; background: var(--stone-light); margin: 12px 0; }
+    .box {
+      border: 1px solid var(--stone-light);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .box-amber {
+      background: var(--amber);
+      color: white;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
+    .box-amber strong { color: white; }
+    .box-ivory {
+      background: var(--ivory);
+      border-left: 3px solid var(--amber);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .code-block {
+      background: var(--charcoal);
+      color: var(--amber-pale);
+      font-family: var(--f-mono);
+      font-size: 9.5pt;
+      padding: 8px 14px;
+      margin: 6px 0;
+      letter-spacing: 0.02em;
+      text-align: center;
+      word-break: break-all;
+    }
+    .step-grid { display: flex; gap: 0; margin-bottom: 8px; }
+    .step-num {
+      background: var(--amber);
+      color: white;
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 4px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 52px;
+      flex-shrink: 0;
+    }
+    .step-body {
+      border: 1px solid var(--stone-light);
+      border-left: none;
+      padding: 8px 12px;
+      flex: 1;
+    }
+    .step-body h4 {
+      font-family: var(--f-body);
+      font-weight: 600;
+      font-size: 10pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .step-body p { font-size: 9.5pt; line-height: 1.5; color: var(--navy-pale); }
+
+    /* ── NASLOVNA STRANICA ─────────────────────────────────────────── */
+    .cover-inner {
+      padding: 0 20mm 0 25mm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .cover-title-block {
+      margin-top: 28mm;
+      margin-bottom: 12mm;
+    }
+    .cover-main-title {
+      font-family: var(--f-display);
+      font-weight: 900;
+      font-size: 72pt;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      display: block;
+    }
+    .cover-sub-title {
+      font-family: var(--f-display);
+      font-weight: 900;
+      font-size: 52pt;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--amber);
+      display: block;
+      margin-top: 4px;
+    }
+    .cover-divider {
+      width: 100%;
+      height: 2px;
+      background: var(--stone-light);
+      margin-bottom: 12mm;
+    }
+    .cover-desc {
+      font-family: var(--f-body);
+      font-style: italic;
+      font-size: 11pt;
+      color: var(--navy-pale);
+      margin-bottom: 12mm;
+      line-height: 1.5;
+    }
+    .toc { list-style: none; }
+    .toc li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--stone-light);
+      font-size: 10.5pt;
+      color: var(--charcoal);
+    }
+    .toc li:last-child { border-bottom: none; }
+    .toc-num {
+      font-family: var(--f-mono);
+      font-size: 9pt;
+      color: var(--amber);
+      letter-spacing: 0.06em;
+      min-width: 24px;
+    }
+
+    /* ── SADRŽAJNE STRANICE ────────────────────────────────────────── */
+    .chapter-inner {
+      padding: 14mm 20mm 14mm 25mm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .chapter-header {
+      margin-bottom: 10mm;
+      position: relative;
+      z-index: 1;
+    }
+    .chapter-label {
+      font-family: var(--f-mono);
+      font-size: 9pt;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .chapter-title {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 24pt;
+      line-height: 1.1;
+      color: var(--charcoal);
+      letter-spacing: -0.01em;
+      max-width: 130mm;
+    }
+    .chapter-divider {
+      height: 2px;
+      background: var(--amber);
+      width: 40mm;
+      margin-top: 6px;
+    }
+    .content { font-size: 10pt; line-height: 1.6; color: var(--charcoal); }
+    .content p { margin-bottom: 8px; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; color: var(--navy-pale); }
+    .content h3 {
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin: 12px 0 6px;
+    }
+    .content h4 {
+      font-family: var(--f-body);
+      font-weight: 600;
+      font-size: 11pt;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .os-icon {
+      display: inline-block;
+      width: 10px; height: 10px;
+      background: var(--amber);
+      margin-right: 4px;
+    }
+    .capability-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--stone-light);
+      margin-bottom: 10px;
+    }
+    .capability-item {
+      padding: 7px 10px;
+      font-size: 9.5pt;
+      border-right: 1px solid var(--stone-light);
+      border-bottom: 1px solid var(--stone-light);
+      line-height: 1.4;
+    }
+    .capability-item:nth-child(2n) { border-right: none; }
+    .capability-item:nth-last-child(-n+2) { border-bottom: none; }
+    .primjer-box {
+      border: 1px solid var(--stone-light);
+      margin-bottom: 8px;
+    }
+    .primjer-header {
+      background: var(--amber);
+      color: white;
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+    }
+    .primjer-body {
+      padding: 10px 12px;
+      font-size: 9.5pt;
+      line-height: 1.55;
+      color: var(--navy-pale);
+    }
+    .prompt-box {
+      background: var(--ivory);
+      border-left: 3px solid var(--amber);
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      font-size: 9.5pt;
+      line-height: 1.6;
+    }
+    .prompt-box strong { color: var(--charcoal); }
+    .key-msg {
+      background: var(--amber);
+      color: white;
+      text-align: center;
+      padding: 12px 16px;
+      font-family: var(--f-body);
+      font-weight: 600;
+      font-size: 10pt;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      margin-top: auto;
+    }
+    .ostale-ideje {
+      font-size: 9pt;
+      color: var(--navy-pale);
+      background: var(--ivory);
+      padding: 8px 14px;
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+    .page-num {
+      position: absolute;
+      bottom: 8mm;
+      right: 20mm;
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Print gumb (samo na ekranu) -->
+<div class="print-bar no-print">
+  <button class="print-btn" onclick="window.print()">↓ Spremi kao PDF</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 1 – NASLOVNA
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="page-header-bar">EDUKATIVNA PLATFORMA · AI · VJEŠTINE · KARIJERA</div>
+
+  <div class="cover-inner">
+    <div class="cover-title-block">
+      <span class="cover-main-title">CLAUDE CODE</span>
+      <span class="cover-sub-title">ZA 5 MINUTA</span>
+    </div>
+
+    <div class="cover-divider"></div>
+
+    <p class="cover-desc">Vodič za korištenje AI alata u izgradnji aplikacija<br>za nestručnjake i profesionalce</p>
+
+    <ol class="toc">
+      <li><span class="toc-num">01</span> Što je Claude Code i zašto vas treba zanimati</li>
+      <li><span class="toc-num">02</span> Postavljanje – macOS, Windows i Linux</li>
+      <li><span class="toc-num">03</span> Vaša prva naredba: izgradite nešto stvarno</li>
+      <li><span class="toc-num">04</span> 5 moćnih stvari koje možete tražiti</li>
+      <li><span class="toc-num">05</span> Pro savjeti za bolje rezultate</li>
+      <li><span class="toc-num">06</span> Napredni savjeti: podignite razinu</li>
+    </ol>
+  </div>
+
+  <div class="page-footer-bar">Nakon50 · Novi dan. Nove vještine.</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 2 – POGLAVLJE 01
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="chapter-num-bg">01</div>
+
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-label">POGLAVLJE 01</div>
+      <h1 class="chapter-title">Što je Claude Code (i zašto vas treba zanimati?)</h1>
+      <div class="chapter-divider"></div>
+    </div>
+
+    <div class="content">
+      <div class="box-ivory">
+        <p><strong>Claude Code</strong> je AI asistent za kodiranje koji živi u terminalnom prozoru vašeg računala. Zamislite ga kao programera dostupnog 24/7 — s kojim razgovarate na razumljivom, svakodnevnom jeziku.</p>
+        <br>
+        <p>Evo što ga čini posebnim: <strong>Vi opišete što želite. Claude Code to izgradi.</strong> Nije potrebno predznanje kodiranja. Umjesto da razmišljate o "kodu", zamijenite tu riječ s "rješenjem". Claude Code je tehnički izvršitelj koji za vas stvara rješenja.</p>
+      </div>
+
+      <div class="section-label">ŠTO CLAUDE CODE MOŽE UČINITI ZA VAS</div>
+      <div class="capability-grid">
+        <div class="capability-item">Izgraditi funkcionalne web aplikacije i alate iz jedne rečenice</div>
+        <div class="capability-item">Automatizirati jednokratne ili ponavljajuće zadatke</div>
+        <div class="capability-item">Kreirati desktop aplikacije koje možete otvoriti dvoklikom</div>
+        <div class="capability-item">Pretvoriti vaše ideje u funkcionalne prototipe u minutama</div>
+      </div>
+
+      <div class="section-label">ZA KOGA JE OVAJ VODIČ</div>
+      <div class="box">
+        <p><strong>Poslovni profesionalci, poduzetnici i radoznali umovi</strong> koji su početnici i žele koristiti AI za izgradnju stvarnih rješenja bez pisanja ijedne linije koda. Ovaj vodič je za ljude koji govore sebi:</p>
+        <br>
+        <p><em>"Kad bih samo imao alat koji bi mogao..."</em> ili <em>"Bilo bi sjajno kad bi se moglo samo..."</em> — odmah zapišite te ideje jer ih danas možda i ostvarite.</p>
+      </div>
+
+      <div class="section-label">PROVJERA STVARNOSTI — 2026. JE VEĆ OVDJE</div>
+      <p>Netko je izgradio vlastitu aplikaciju, s punom integracijom Notion i Slack alata, za svega 3,5 sata. Ljudi na internetu već stvaraju funkcionalne kopije softvera vrijednih milijardu eura. <strong>Izgradnja rješenja u 2026. neće nalikovati na 2024.</strong></p>
+    </div>
+
+    <div class="page-num">2 / 8</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 3 – POGLAVLJE 02
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="chapter-num-bg">02</div>
+
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-label">POGLAVLJE 02</div>
+      <h1 class="chapter-title">Postavljanje za 60 sekundi</h1>
+      <div class="chapter-divider"></div>
+    </div>
+
+    <div class="content">
+      <p style="margin-bottom:10px;"><strong>Ne trebate biti tehnički stručnjak. Samo slijedite korake.</strong></p>
+
+      <h4><span class="os-icon"></span> macOS</h4>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>01</div>
+        <div class="step-body">
+          <h4>OTVORITE TERMINAL</h4>
+          <p>Pritisnite Command + Space (Spotlight). Upišite "Terminal" i pritisnite Enter. Pojavit će se prozor — ne bojte se, samo ćete zalijepiti jednu liniju.</p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>02</div>
+        <div class="step-body">
+          <h4>ZALIJEPITE NAREDBU ZA INSTALACIJU</h4>
+          <p>Kopirajte cijelu ovu liniju i zalijepite je u Terminal:</p>
+          <div class="code-block">curl -fsSL https://claude.ai/install.sh | bash</div>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>03</div>
+        <div class="step-body">
+          <h4>POKRENITE CLAUDE CODE</h4>
+          <p>Nakon instalacije, upišite ovu jednu riječ iza znaka % pa pritisnite Enter:</p>
+          <div class="code-block">claude</div>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>04</div>
+        <div class="step-body">
+          <h4>PRIJAVITE SE</h4>
+          <p>Otvorit će se prozor preglednika. Prijavite se s Claude Pro (20 EUR/mj) ili Claude Max (200 EUR/mj) računom. Gotovo.</p>
+        </div>
+      </div>
+
+      <h4 style="margin-top:10px;"><span class="os-icon"></span> Windows</h4>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>01</div>
+        <div class="step-body">
+          <h4>OTVORITE POWERSHELL</h4>
+          <p>Pritisnite Windows + X i odaberite "Windows PowerShell" ili "Terminal". Alternativno, pretražite "PowerShell" u izborniku Start.</p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>02</div>
+        <div class="step-body">
+          <h4>INSTALIRAJTE NODE.JS (preduvjet)</h4>
+          <p>Claude Code zahtijeva Node.js. Preuzmite s nodejs.org i instalirajte. Zatim provjerite: <code style="font-family:var(--f-mono);font-size:9pt;">node --version</code></p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>03</div>
+        <div class="step-body">
+          <h4>INSTALIRAJTE CLAUDE CODE</h4>
+          <p>U PowerShellu unesite:</p>
+          <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>04</div>
+        <div class="step-body">
+          <h4>POKRENITE I PRIJAVITE SE</h4>
+          <p>Upišite "claude" i pritisnite Enter. Pratite upute za prijavu u pregledniku.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-num">3 / 8</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 4 – POGLAVLJE 02 (nastavak – Linux)
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+
+  <div class="chapter-inner">
+    <div class="content">
+      <h4><span class="os-icon"></span> Linux</h4>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>01</div>
+        <div class="step-body">
+          <h4>OTVORITE TERMINAL</h4>
+          <p>Ovisno o distribuciji: Ctrl+Alt+T ili Terminal u aplikacijama.</p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>02</div>
+        <div class="step-body">
+          <h4>INSTALIRAJTE NODE.JS</h4>
+          <p>Za Ubuntu/Debian:</p>
+          <div class="code-block">sudo apt update &amp;&amp; sudo apt install nodejs npm</div>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>03</div>
+        <div class="step-body">
+          <h4>INSTALIRAJTE CLAUDE CODE</h4>
+          <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="step-num">KORAK<br>04</div>
+        <div class="step-body">
+          <h4>POKRENITE I PRIJAVITE SE</h4>
+          <p>Upišite "claude" i pritisnite Enter. Pratite upute za prijavu.</p>
+        </div>
+      </div>
+
+      <div class="box-amber" style="margin-top:14px;text-align:center;">
+        <strong>Na svim platformama: jednom instalirano, uvijek dostupno.</strong><br>
+        <span style="font-size:9.5pt;opacity:0.85;">Samo upišite <code style="font-family:var(--f-mono);">claude</code> u Terminal i razgovarajte.</span>
+      </div>
+    </div>
+
+    <div class="page-num">4 / 8</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 5 – POGLAVLJE 03
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="chapter-num-bg">03</div>
+
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-label">POGLAVLJE 03</div>
+      <h1 class="chapter-title">Vaša prva naredba: Izgradite nešto stvarno</h1>
+      <div class="chapter-divider"></div>
+    </div>
+
+    <div class="content">
+      <p style="margin-bottom:10px;">Sada počinje zabava. Zamolite Claude Code da vam izgradi pravu desktop aplikaciju. Možete koristiti i glasovni unos!</p>
+
+      <div class="section-label">ŠTO UPISATI</div>
+
+      <div class="prompt-box">
+        <strong>PROMPT:</strong> "Napravi mi jednostavnu <em>[opišite svoju ideju]</em>. Zapakiraj je kao macOS/Windows/Linux aplikaciju koju mogu dvaput kliknuti s radne površine — ne želim koristiti terminal. Objasni mi što radiš dok gradiš, na razumljivom jeziku. Evo što želim da radi: <em>[opišite što želite]</em>"
+      </div>
+
+      <div class="primjer-box">
+        <div class="primjer-header">PRIMJER 1</div>
+        <div class="primjer-body">"Napravi mi kalkulator troškova sastanka. Zapakiraj ga kao macOS/Windows/Linux aplikaciju. Objasni mi što radiš. Evo što želim: (1) Unesem koliko je ljudi na sastanku i prosječna plaća, (2) Prikazuje se iznos koji raste dok sastanak traje, (3) Postoji dugme 'Završi sastanak' koje prikazuje ukupni trošak, (4) Ako sastanak prijeđe 5.000 EUR, automatski se šalje e-mail HR-u s popisom sudionika."</div>
+      </div>
+
+      <div class="primjer-box">
+        <div class="primjer-header">PRIMJER 2</div>
+        <div class="primjer-body">"Napravi mi osobni CRM za umrežavanje. Zapakiraj ga kao macOS/Windows/Linux aplikaciju. Objasni mi što radiš. Evo što želim: (1) Mogu dodavati ljude koje sam upoznao/la s bilješkama o tome gdje i o čemu smo razgovarali, (2) Podsjeća me ako nisam kontaktirao/la nekoga 30 dana, (3) Automatski sastavlja prijedlog poruke za kontaktiranje, (4) Mogu pretraživati po tvrtki, imenu ili ključnim riječima, (5) Još jedna korisna funkcija po tvom izboru."</div>
+      </div>
+
+      <div class="section-label">OSTALE IDEJE ZA PROJEKTE</div>
+      <div class="ostale-ideje">
+        Alat za upravljanje projektima · Osobni alat za bilješke · Upravitelj receptima · Praćenje termina · Upravitelj hipoteka · Prodajna stranica s digitalnim proizvodima · Sučelje za uvide klijenata
+      </div>
+
+      <div class="key-msg">
+        KLJUČ: OPIŠITE PROBLEM NA RAZUMLJIVOM JEZIKU.<br>BUDITE KONKRETNI. NEKA CLAUDE RAZRADI TEHNIČKE DETALJE.
+      </div>
+    </div>
+
+    <div class="page-num">5 / 8</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 6 – POGLAVLJE 04
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="chapter-num-bg">04</div>
+
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-label">POGLAVLJE 04</div>
+      <h1 class="chapter-title">5 moćnih stvari koje možete tražiti</h1>
+      <div class="chapter-divider"></div>
+    </div>
+
+    <div class="content">
+      <p style="margin-bottom:10px;">Claude Code nije samo za izgradnju aplikacija. Evo pet kategorija zadataka koji odmah štede sate rada.</p>
+
+      <div class="section-label">01 · AUTOMATIZIRANI EXCEL I CSV IZVJEŠTAJI</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "Imam 12 Excel datoteka u mapi Downloads, svaka ima list 'Prodaja'. Spoji ih u jedan zbirni izvještaj, izračunaj ukupne iznose po regiji i generiraj PDF s grafikonom."
+      </div>
+
+      <div class="section-label">02 · PRIKUPLJANJE PODATAKA S WEBA</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "Prikupi sve oglase za posao s [stranica] koji sadrže riječ 'menadžer', spremi u Excel s kolonama: naziv, tvrtka, datum objave, link."
+      </div>
+
+      <div class="section-label">03 · AUTOMATSKI EMAILOVI I OBAVIJESTI</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "Napravi skriptu koja svaki ponedjeljak ujutro pošalje email mom timu s popisom zadataka iz Excela. Uključi samo zadatke koji su 'U tijeku' ili 'Kasni'."
+      </div>
+
+      <div class="section-label">04 · OBRADA DOKUMENATA I PDF-OVA</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "Imam mapu s 50 PDF ugovora. Izvuci iz svakog: ime klijenta, datum potpisa, ukupnu vrijednost ugovora. Spremi sve u jedan Excel."
+      </div>
+
+      <div class="section-label">05 · OSOBNI ALATI I MINI APLIKACIJE</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "Napravi mi jednostavnu desktop aplikaciju za praćenje vremena — kliknem Start/Stop za svaki projekt, na kraju dana prikaže koliko sam sati proveo/la na čemu."
+      </div>
+
+      <div class="key-msg">
+        KLJUČ: SVAKI ZADATAK KOJI RADITE RUČNO SVAKI TJEDAN<br>CLAUDE CODE MOŽE AUTOMATIZIRATI ZA VAS.
+      </div>
+    </div>
+
+    <div class="page-num">6 / 8</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 7 – POGLAVLJE 05
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="chapter-num-bg">05</div>
+
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-label">POGLAVLJE 05</div>
+      <h1 class="chapter-title">Pro savjeti za bolje rezultate</h1>
+      <div class="chapter-divider"></div>
+    </div>
+
+    <div class="content">
+
+      <div class="section-label">BUDITE KONKRETNI, NE OPŠIRNI</div>
+      <div class="capability-grid">
+        <div class="capability-item" style="background:var(--ivory);">
+          <strong style="color:var(--navy-pale);font-size:8.5pt;">❌ Loše:</strong><br>
+          "Napravi mi nešto za praćenje projekata"
+        </div>
+        <div class="capability-item">
+          <strong style="color:var(--amber);font-size:8.5pt;">✓ Dobro:</strong><br>
+          "Napravi Excel tablicu s kolonama: projekt, rok, status, osoba odgovorna. Dodaj dropdown za status: Nije počelo / U tijeku / Završeno / Kasni."
+        </div>
+      </div>
+
+      <div class="section-label">KORISTITE CLAUDE.MD ZA PAMĆENJE KONTEKSTA</div>
+      <div class="box">
+        <p>Napravite tekstualni fajl <code style="font-family:var(--f-mono);font-size:9pt;">CLAUDE.md</code> u mapi projekta. U njega napišite kontekst:</p>
+        <div class="code-block" style="text-align:left;font-size:8.5pt;line-height:1.6;">Ovo je projekt za HR odjel tvrtke XYZ.<br>Koristimo Excel 2019, Windows 10.<br>Svi nazivi stupaca moraju biti na hrvatskom.<br>Email reporti idu na: tim@tvrtka.hr</div>
+        <p style="margin-top:6px;font-size:9.5pt;color:var(--navy-pale);">Claude Code automatski čita taj fajl i pamti kontekst kroz cijelu sesiju.</p>
+      </div>
+
+      <div class="section-label">KAD NEŠTO NE RADI — OPIŠITE GREŠKU</div>
+      <div class="prompt-box">
+        <strong>Prompt za debugiranje:</strong> "Kada pokrenem skriptu dobivam ovu grešku: [kopirajte tekst greške]. Radim na Windows 10, Python 3.11. Što je problem i kako ga riješiti?"
+      </div>
+
+      <div class="section-label">ITERIRAJTE MALIM KORACIMA</div>
+      <div class="box">
+        <p style="margin-bottom:6px;">Ne tražite sve odjednom. Gradite korak po korak:</p>
+        <p style="font-size:9pt;color:var(--navy-pale);line-height:1.7;">
+          <strong>Korak 1:</strong> "Napravi osnovnu tablicu s 3 kolone"<br>
+          <strong>Korak 2:</strong> "Dodaj automatski izračun ukupnog iznosa"<br>
+          <strong>Korak 3:</strong> "Dodaj filter po datumu i izvoz u PDF"
+        </p>
+      </div>
+
+      <div class="section-label">SPREMITE DOBRE PROMPTOVE</div>
+      <p style="font-size:9.5pt;color:var(--navy-pale);margin-bottom:0;">Kad prompt dobro funkcionira, kopirajte ga u Word dokument ili Notepad. Idući put uštedit ćete 10 minuta pokušaja. Ovo je vaša osobna prompt biblioteka.</p>
+
+    </div>
+
+    <div class="page-num">7 / 8</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     STRANICA 8 – POGLAVLJE 06
+     ══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="amber-edge"></div>
+  <div class="chapter-num-bg">06</div>
+
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-label">POGLAVLJE 06</div>
+      <h1 class="chapter-title">Napredni savjeti: podignite razinu</h1>
+      <div class="chapter-divider"></div>
+    </div>
+
+    <div class="content">
+
+      <div class="section-label">GIT — SIGURNOSNA KOPIJA PROJEKATA</div>
+      <div class="box">
+        <p style="margin-bottom:6px;">Git je sustav koji pamti svaku verziju vašeg projekta — kao "Undo" koji seže godinama unazad. Zamolite Claude Code da ga postavi:</p>
+        <div class="code-block" style="text-align:left;font-size:8.5pt;">"Postavi Git za ovaj projekt i napravi prvu sigurnosnu kopiju na GitHub-u."</div>
+      </div>
+
+      <div class="section-label">RAD S VIŠE DATOTEKA ODJEDNOM</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "U mapi /Documents/Ugovori/ imam 200 Word dokumenata. Pronađi sve koji sadrže frazu 'raskid ugovora' i napravi Excel popis s nazivom fajla i datumom izmjene."
+      </div>
+
+      <div class="section-label">DEPLOYMENT — OBJAVA NA WEB</div>
+      <div class="box">
+        <p style="margin-bottom:6px;">Kad izgradite web alat, Claude Code ga može odmah objaviti online besplatno:</p>
+        <div class="code-block" style="text-align:left;font-size:8.5pt;">"Objavi ovu web aplikaciju na Netlify ili Vercel. Besplatni plan je dovoljan. Daj mi link koji mogu podijeliti s kolegama."</div>
+      </div>
+
+      <div class="section-label">INTEGRACIJA S NOTIONOM I SLACKOM</div>
+      <div class="prompt-box">
+        <strong>Prompt:</strong> "Svaki put kad u Notion bazi podataka promijenim status zadatka u 'Završeno', pošalji poruku u Slack kanal #tim-izvještaji s imenom zadatka i datumom."
+      </div>
+
+      <div class="section-label">SLJEDEĆI KORAK</div>
+      <div class="box-ivory" style="margin-bottom:0;">
+        <p style="margin-bottom:6px;"><strong>Automatizirajte jedan zadatak ovaj tjedan.</strong></p>
+        <p style="font-size:9.5pt;color:var(--navy-pale);">Identificirajte jedan ponavljajući zadatak koji radite ručno — izvještaj, kopiranje podataka, slanje emailova. Opišite ga Claude Codeu što konkretnije možete. Rezultat: sati vraćeni nazad vama.</p>
+      </div>
+
+      <div class="key-msg" style="margin-top:14px;">
+        NAKON50 · NOVI VODIČ SVAKI TJEDAN<br>
+        <span style="font-weight:400;font-size:9.5pt;opacity:0.85;">nakon50.hr</span>
+      </div>
+    </div>
+
+    <div class="page-num">8 / 8</div>
+  </div>
+
+  <div class="page-footer-bar">Nakon50 · Novi dan. Nove vještine.</div>
+</div>
+
+</body>
+</html>
