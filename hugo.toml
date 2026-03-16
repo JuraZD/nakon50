@@ -3,6 +3,15 @@ languageCode = "hr"
 defaultContentLanguage = "hr"
 theme = "congo"
 
+[minify]
+  minifyOutput = true
+  [minify.tdewolff.html]
+    keepWhitespace = false
+  [minify.tdewolff.css]
+    precision = 0
+  [minify.tdewolff.js]
+    precision = 0
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

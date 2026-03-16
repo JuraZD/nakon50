@@ -6,6 +6,7 @@
 :root {
   --n50-ivory:       #F5F0E8;
   --n50-amber:       #B84E16;
+  --n50-amber-dark:  #A84010; /* accessibility: 5.1:1 na ivory — za male tekstove */
   --n50-amber-pale:  #DC8C50;
   --n50-navy:        #163458;
   --n50-navy-pale:   #3C5A80;
@@ -271,7 +272,7 @@ body:has(#n50-homepage) header {
   font-family: var(--n50-f-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--n50-stone);
+  color: var(--n50-navy);
   margin-bottom: 28px;
 }
 .n50-hero-tag::before {
@@ -444,7 +445,7 @@ body:has(#n50-homepage) header {
 .n50-step-num {
   font-family: var(--n50-f-mono);
   font-size: 11px;
-  color: var(--n50-amber);
+  color: var(--n50-amber-dark);
   letter-spacing: 0.06em;
   white-space: nowrap;
 }
