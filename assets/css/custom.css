@@ -302,7 +302,7 @@ body:has(#n50-homepage) header {
   margin-bottom: 44px;
 }
 
-.n50-hero-actions { display: flex; gap: 16px; align-items: center; }
+.n50-hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 
 .n50-btn-primary {
   background: var(--n50-amber);
@@ -1046,6 +1046,28 @@ body:has(#n50-homepage) header {
   .n50-list-card.featured { grid-row: auto; padding: 28px; }
   .n50-list-card.featured .n50-list-card-title { font-size: 24px; }
   .n50-section-content { margin-bottom: 32px; }
+}
+
+@media (max-width: 480px) {
+  /* Homepage — pillars u 1 kolonu na telefonima */
+  .n50-pillars { grid-template-columns: 1fr; }
+
+  /* Hero — uži padding */
+  .n50-hero-left { padding: 40px 24px 40px 30px; }
+  .n50-hero-title { font-size: clamp(44px, 13vw, 64px); }
+  .n50-hero-sub { font-size: 16px; margin-bottom: 32px; }
+
+  /* Announce bar — manji padding */
+  .n50-announce { padding: 10px 16px 10px 22px; gap: 12px; }
+
+  /* Steps bar — manji padding */
+  .n50-steps-bar { padding: 20px 24px 20px 30px; }
+
+  /* Sekcije — tješnji padding */
+  .n50-section { padding: 48px 24px 48px 30px; }
+
+  /* Newsletter — manji gap u jednoj koloni */
+  .n50-newsletter { gap: 32px; }
 }
 
 /* ════════════════════════════════════════════════════════════════════
