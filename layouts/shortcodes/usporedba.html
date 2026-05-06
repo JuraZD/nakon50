@@ -1,0 +1,47 @@
+<div class="usporedba-grid">
+  {{ range .Params.stavke }}
+  <div class="usporedba-kartica">
+        <div class="usporedba-naslov">{{ .naslov }}</div>
+        <div>
+    {{ range .tocke }}
+      <div class="usporedba-tocka">{{ . }}</div>
+        {{ end }}
+    </div>
+          </div>
+        {{ end }}
+        </div>
+
+        <style>
+        .usporedba-grid {
+          display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .usporedba-grid {
+        grid-template-columns: 1fr 1fr;
+}
+}
+
+.usporedba-kartica {
+    border: 1px solid var(--border, #e5e7eb);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.usporedba-naslov {
+    font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary, #6366f1);
+}
+
+.usporedba-tocka {
+    font-size: 0.9rem;
+  padding: 0.3rem 0;
+  line-height: 1.5;
+}
+</style>
