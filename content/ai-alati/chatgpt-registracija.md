@@ -57,7 +57,24 @@ Ukupno: 3 minute, bez kreditne kartice.
 
 Oba alata rade isti temeljni posao: razgovaraš, postavljaš zadatke, dobivaš odgovore. Razlika je u nijansama.
 
-{{< usporedba stavke=`[{"naslov":"ChatGPT","tocke":["Napravio: OpenAI (SAD)","Najrašireniji AI alat na svijetu — najviše uputa i primjera na internetu","Jači za zadatke koji uključuju pretraživanje weba","Malo direktniji u odgovorima — ide ravno na stvar","Besplatno: GPT-4o model, s povremenim ograničenjem broja poruka"]},{"naslov":"Claude","tocke":["Napravio: Anthropic (SAD)","Poznat po duljim, strukturiranijim odgovorima — bolji za pisanje i analizu","Čita i analizira dokumente koje mu pošalješ (PDF, Word)","Ton je nešto oprezniji i detaljniji nego ChatGPT","Besplatno: Claude Sonnet model, s dnevnim limitom poruka"]}]` >}}
+<div class="usporedba-grid">
+  <div class="usporedba-kartica">
+    <div class="usporedba-naslov">ChatGPT</div>
+    <div class="usporedba-tocka">Napravio: OpenAI (SAD)</div>
+    <div class="usporedba-tocka">Najrašireniji AI alat na svijetu — najviše uputa i primjera na internetu</div>
+    <div class="usporedba-tocka">Jači za zadatke koji uključuju pretraživanje weba</div>
+    <div class="usporedba-tocka">Malo direktniji u odgovorima — ide ravno na stvar</div>
+    <div class="usporedba-tocka">Besplatno: GPT-4o model, s povremenim ograničenjem broja poruka</div>
+  </div>
+  <div class="usporedba-kartica">
+    <div class="usporedba-naslov">Claude</div>
+    <div class="usporedba-tocka">Napravio: Anthropic (SAD)</div>
+    <div class="usporedba-tocka">Poznat po duljim, strukturiranijim odgovorima — bolji za pisanje i analizu</div>
+    <div class="usporedba-tocka">Čita i analizira dokumente koje mu pošalješ (PDF, Word)</div>
+    <div class="usporedba-tocka">Ton je nešto oprezniji i detaljniji nego ChatGPT</div>
+    <div class="usporedba-tocka">Besplatno: Claude Sonnet model, s dnevnim limitom poruka</div>
+  </div>
+</div>
 
 **Koji početi koristiti?**
 
