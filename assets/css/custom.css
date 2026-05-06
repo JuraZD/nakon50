@@ -2271,3 +2271,34 @@ body:has(#n50-homepage) header {
   .n50-usl-header { margin-bottom: 40px; }
   .n50-usl-card-wrap { padding: 24px 20px 20px; }
 }
+
+
+/* Usporedba kartica */
+.usporedba-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+@media (min-width: 640px) {
+  .usporedba-grid { grid-template-columns: 1fr 1fr; }
+}
+.usporedba-kartica {
+  border: 1px solid var(--n50-stone-light, #e5e7eb);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.usporedba-naslov {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--n50-amber, #B84E16);
+}
+.usporedba-tocka {
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--n50-stone-light, #f3f4f6);
+}
+.usporedba-tocka:last-child { border-bottom: none; }
