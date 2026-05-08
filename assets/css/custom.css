@@ -2547,7 +2547,7 @@ body:has(#n50-homepage) header {
   position: relative;
 }
 .n50lp-step:not(:last-child)::after {
-  content: 'to';
+  content: '→';
   position: absolute;
   right: 0.25rem;
   top: 1.6rem;
