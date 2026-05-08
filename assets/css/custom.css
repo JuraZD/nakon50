@@ -2746,29 +2746,3 @@ body:has(#n50-homepage) header {
   .n50lp-newsletter-inner { grid-template-columns: 1fr; gap: 2rem; }
   .n50lp-strip { padding: 1rem 1.25rem; }
 }
-
-
-/* ── Full-width bleed fix ───────────────────────────────────────── */
-/* Probijamo Congo body padding za full-width sekcije               */
-/* Tehnika: left-offset = 50% container - 50vw (bez scrollbar)     */
-
-.n50lp-strip,
-.n50lp-not,
-.n50lp-newsletter {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-/* Path sekcija — neutralna boja, manje kritično ali isto full-bleed */
-.n50lp-path {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
