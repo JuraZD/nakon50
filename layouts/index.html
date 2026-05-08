@@ -9,215 +9,173 @@
   </a>
 
   <!-- ── Hero ────────────────────────────────────────────────────── -->
-  <section class="n50-hero">
-    <div class="n50-hero-left">
-      <div class="n50-hero-tag">EDUKATIVNA PLATFORMA · AI · VJEŠTINE · KARIJERA</div>
-      <h1 class="n50-hero-title">
-        <span class="line-1">NOVI DAN.</span>
-        <span class="line-2">NOVE</span>
-        <span class="line-3">VJEŠTINE.</span>
+  <section class="n50lp-hero">
+    <div class="n50lp-hero-inner">
+      <p class="n50lp-eyebrow">AI · Digitalne vještine · Karijera 50+</p>
+      <h1 class="n50lp-h1">
+        Tvoji kolege već koriste AI.<br>
+        <em>Ti možeš naučiti za vikend.</em>
       </h1>
-      <p class="n50-hero-sub">
-        Praktična platforma za ljude 50+ koji žele ostati relevantni, naučiti AI alate
-        i digitalne vještine — bez dramatiziranja i prodavanja magle.
+      <p class="n50lp-lead">
+        Praktični vodiči za ljude koji nisu tehnolozi — ali žele ostati relevantni.
+        Bez hype-a, bez pretpostavke da već sve znaš.
       </p>
-      <div class="n50-hero-actions">
-        <a href="{{ "ai-alati/" | relURL }}" class="n50-btn-primary">Počni od početka →</a>
-        <a href="{{ "vjestine/" | relURL }}" class="n50-btn-ghost">Pregledaj vodiče</a>
+      <div class="n50lp-actions">
+        <a href="{{ "ai-alati/" | relURL }}" class="n50-btn-primary">Počni od prvog vodiča →</a>
+        <a href="{{ "vjestine/" | relURL }}" class="n50-btn-ghost">Pregledaj sve teme</a>
       </div>
-    </div>
-
-    <div class="n50-hero-right">
-      <div class="n50-bars">
-        <div class="n50-bar" style="height:18%"></div>
-        <div class="n50-bar" style="height:22%"></div>
-        <div class="n50-bar" style="height:25%"></div>
-        <div class="n50-bar" style="height:28%"></div>
-        <div class="n50-bar" style="height:30%"></div>
-        <div class="n50-bar" style="height:34%"></div>
-        <div class="n50-bar" style="height:38%"></div>
-        <div class="n50-bar" style="height:42%"></div>
-        <div class="n50-bar" style="height:47%"></div>
-        <div class="n50-bar" style="height:52%"></div>
-        <div class="n50-bar" style="height:56%"></div>
-        <div class="n50-bar" style="height:62%"></div>
-        <div class="n50-bar" style="height:67%"></div>
-        <div class="n50-bar" style="height:72%"></div>
-        <div class="n50-bar" style="height:78%"></div>
-        <div class="n50-bar" style="height:84%"></div>
-        <div class="n50-bar" style="height:91%"></div>
-        <div class="n50-bar" style="height:100%"></div>
-      </div>
-      <div class="n50-hero-stat">50<span>+</span></div>
-      <div class="n50-hero-stat-label">GODINA ISKUSTVA · NOVA POGLAVLJA</div>
-      {{ $allTags := .Site.Taxonomies.tags.ByCount }}
-      {{ if $allTags }}
-      <div class="n50-float-tags">
-        {{ range $i, $tag := first 5 $allTags }}
-          <a href="{{ $tag.Page.RelPermalink }}" class="n50-tag{{ if eq $i 0 }} amber{{ end }}">{{ $tag.Name | upper }}</a>
-        {{ end }}
-      </div>
-      {{ end }}
+      <p class="n50lp-note">Besplatno. Jedan vodič tjedno. Bez spama.</p>
     </div>
   </section>
 
-  <!-- ── Steps bar ───────────────────────────────────────────────── -->
-  <div class="n50-steps-bar">
-    <div class="n50-step-item">
-      <span class="n50-step-num">01</span>
-      <span class="n50-step-text">Odaberi rubriku koja te zanima</span>
-    </div>
-    <div class="n50-step-item">
-      <span class="n50-step-num">02</span>
-      <span class="n50-step-text">Prati vodič korak po korak</span>
-    </div>
-    <div class="n50-step-item">
-      <span class="n50-step-num">03</span>
-      <span class="n50-step-text">Primijeni odmah na svom poslu</span>
-    </div>
-    <div class="n50-step-item">
-      <span class="n50-step-num">04</span>
-      <span class="n50-step-text">Preuzmi predložak ili skriptu</span>
+  <!-- ── Trigger strip ────────────────────────────────────────────── -->
+  <div class="n50lp-strip">
+    <div class="n50lp-strip-inner">
+      <p>"Koliko dugo možeš ignorirati alat koji tvoji mlađi kolege već koriste svaki dan?"</p>
+      <span>— Pitanje koje vrijedi sebi postaviti</span>
     </div>
   </div>
 
-  <!-- ── Pillars ──────────────────────────────────────────────────── -->
-  <section class="n50-section n50-fade-up">
-    <div class="n50-section-label">SADRŽAJNI STUPOVI</div>
-    <h2 class="n50-section-title">Pet područja. Jedan cilj.</h2>
-    <div class="n50-pillars">
-
-      <a href="{{ "ai-alati/" | relURL }}" class="n50-pillar">
-        <div class="n50-pillar-bar"></div>
-        <div class="n50-pillar-num">01</div>
-        <div class="n50-pillar-title">AI Alati u Praksi</div>
-        <div class="n50-pillar-sub">Prompti, workflow i konkretni primjeri iz uredskog rada.</div>
-      </a>
-
-      <a href="{{ "vjestine/" | relURL }}" class="n50-pillar">
-        <div class="n50-pillar-bar"></div>
-        <div class="n50-pillar-num">02</div>
-        <div class="n50-pillar-title">Vještine koje se Odmah Koriste</div>
-        <div class="n50-pillar-sub">Excel, Python, automatizacija — kratke lekcije s primjerom.</div>
-      </a>
-
-      <a href="{{ "karijera/" | relURL }}" class="n50-pillar">
-        <div class="n50-pillar-bar"></div>
-        <div class="n50-pillar-num">03</div>
-        <div class="n50-pillar-title">Karijera 50+ i Tržište Rada</div>
-        <div class="n50-pillar-sub">Relevancija vještina, CV, LinkedIn i pregovaranje.</div>
-      </a>
-
-      <a href="{{ "projekti/" | relURL }}" class="n50-pillar">
-        <div class="n50-pillar-bar"></div>
-        <div class="n50-pillar-num">04</div>
-        <div class="n50-pillar-title">Projekti i Prihodi</div>
-        <div class="n50-pillar-sub">Mali projekti, digitalni proizvodi i portfolio primjeri.</div>
-      </a>
-
-      <a href="{{ "ucenje/" | relURL }}" class="n50-pillar">
-        <div class="n50-pillar-bar"></div>
-        <div class="n50-pillar-num">05</div>
-        <div class="n50-pillar-title">Sustavi i Navike</div>
-        <div class="n50-pillar-sub">Second brain, Obsidian, plan učenja i održiv ritam.</div>
-      </a>
-
+  <!-- ── Story / Zašto Nakon50 ────────────────────────────────────── -->
+  <section class="n50lp-story">
+    <div class="n50lp-story-text">
+      <p class="n50lp-label">Zašto Nakon50</p>
+      <h2 class="n50lp-h2">Iskustvo ti nije teret.<br><em>Nedostaje ti samo alat.</em></h2>
+      <p>
+        Imaš 20, 30 godina radnog iskustva. Razumiješ procese, ljude, kontekst —
+        bolje nego itko mlađi u timu. Jedino što ne imaš jest navika korištenja
+        alata koji su se pojavili prekjučer.
+      </p>
+      <p>
+        Nakon50 ne uči te informatiku. Uči te gdje točno ubaciti AI u ono što
+        već radiš — i koliko vremena možeš uštedjeti ovaj tjedan.
+      </p>
+    </div>
+    <div class="n50lp-case">
+      <p class="n50lp-case-name">Primjer iz prakse</p>
+      <p class="n50lp-case-quote">"Imala sam izvještaj koji mi je tjedan dana uzimao svaki ponedjeljak. Sad ga napravim za sat."</p>
+      <p class="n50lp-case-detail">Ana, 54, referentica u javnoj upravi. Naučila koristiti ChatGPT i Excel formule kroz tri vodiča.</p>
+      <p class="n50lp-case-result">↑ Ušteđeno: ~6 sati tjedno</p>
     </div>
   </section>
 
-  <!-- ── Featured articles ────────────────────────────────────────── -->
-  {{ $posts := first 3 (where .Site.RegularPages "Section" "!=" "o-projektu") }}
-  {{ if $posts }}
-  <section class="n50-section n50-fade-up" style="padding-top:0">
-    <div class="n50-section-label">ISTAKNUTI VODIČI</div>
-    <h2 class="n50-section-title">Počni ovdje.</h2>
-    <div class="n50-articles{{ if le (len $posts) 2 }} two-up{{ end }}">
-      {{ range $i, $post := $posts }}
-        {{ $isFeatured := eq $i 0 }}
-        <a href="{{ $post.Permalink }}" class="n50-article-card{{ if $isFeatured }} featured{{ end }}">
-          <div class="n50-article-meta">
-            {{ with index $post.Params.categories 0 }}
-              <span class="n50-article-cat">{{ . | upper }}</span>
-            {{ end }}
-            <span>{{ $post.ReadingTime }} min čitanja</span>
-          </div>
-          <div class="n50-article-title">{{ $post.Title }}</div>
-          {{ with $post.Params.summary }}
-            <div class="n50-article-excerpt">{{ . }}</div>
-          {{ else }}
-            <div class="n50-article-excerpt">{{ $post.Summary | truncate 120 }}</div>
-          {{ end }}
-          <div class="n50-article-link">Pročitaj{{ if $isFeatured }} vodič{{ end }} →</div>
-        </a>
+  <!-- ── Što Nakon50 nije ──────────────────────────────────────────── -->
+  <section class="n50lp-not">
+    <div class="n50lp-not-inner">
+      <p class="n50lp-label n50lp-label--light">Što Nakon50 nije</p>
+      <div class="n50lp-not-grid">
+        <div>
+          <p class="n50lp-not-x">✕ Nije ovo</p>
+          <p class="n50lp-not-title">Tech entuzijazam i hype</p>
+          <p class="n50lp-not-desc">Ne pišemo o AI koji će promijeniti svijet. Pišemo o AI koji može promijeniti tvoj ponedjeljak.</p>
+        </div>
+        <div>
+          <p class="n50lp-not-x">✕ Nije ovo</p>
+          <p class="n50lp-not-title">Sadržaj za programere</p>
+          <p class="n50lp-not-desc">Nema pretpostavke da znaš kodirati. Nema žargona bez objašnjenja. Svaki vodič pretpostavlja samo radnu stolicu i internet.</p>
+        </div>
+        <div>
+          <p class="n50lp-not-x">✕ Nije ovo</p>
+          <p class="n50lp-not-title">Motivacijski govor</p>
+          <p class="n50lp-not-desc">Ne govorimo ti da možeš sve naučiti. Govorimo ti točno što trebaš naučiti — i u koliko koraka.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Put za 3 tjedna ──────────────────────────────────────────── -->
+  <section class="n50lp-path">
+    <div class="n50lp-path-inner">
+      <div class="n50lp-section-header">
+        <h2 class="n50lp-section-title">Tvoj put za 3 tjedna</h2>
+        <a href="{{ "ai-alati/" | relURL }}" class="n50lp-section-link">Vidi detaljan plan →</a>
+      </div>
+      <div class="n50lp-steps">
+        <div class="n50lp-step">
+          <p class="n50lp-step-num">Tjedan 01</p>
+          <p class="n50lp-step-title">Otvori prvi AI alat</p>
+          <p class="n50lp-step-desc">ChatGPT ili Claude — registracija, prvi prompt, prva korisna stvar.</p>
+        </div>
+        <div class="n50lp-step">
+          <p class="n50lp-step-num">Tjedan 02</p>
+          <p class="n50lp-step-title">Primijeni na svoj posao</p>
+          <p class="n50lp-step-desc">Email, izvještaj, prezentacija — konkretan zadatak iz tvojih radnih dana.</p>
+        </div>
+        <div class="n50lp-step">
+          <p class="n50lp-step-num">Tjedan 03</p>
+          <p class="n50lp-step-title">Izgradi workflow</p>
+          <p class="n50lp-step-desc">Ponavljajući obrazac koji koristiš svaki tjedan bez razmišljanja.</p>
+        </div>
+        <div class="n50lp-step">
+          <p class="n50lp-step-num">I dalje</p>
+          <p class="n50lp-step-title">Širiš po potrebi</p>
+          <p class="n50lp-step-desc">Python, Excel automatizacija, PDF analiza — kad i ako trebaš.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Istaknuti vodiči ─────────────────────────────────────────── -->
+  <section class="n50lp-guides">
+    <div class="n50lp-section-header">
+      <h2 class="n50lp-section-title">Počni ovdje</h2>
+      <a href="{{ "ai-alati/" | relURL }}" class="n50lp-section-link">Svi vodiči →</a>
+    </div>
+    <div class="n50lp-guides-grid">
+
+      {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
+      {{ range $featured }}
+      <a href="{{ .Permalink }}" class="n50lp-card n50lp-card--featured">
+        <p class="n50lp-card-tag">Preporučeni start</p>
+        <p class="n50lp-card-title">{{ .Title }}</p>
+        <p class="n50lp-card-meta">{{ .ReadingTime }} min · {{ index .Params.tags 0 }}</p>
+      </a>
+      {{ else }}
+      <a href="{{ "ai-alati/chatgpt-claude-registracija/" | relURL }}" class="n50lp-card n50lp-card--featured">
+        <p class="n50lp-card-tag">Preporučeni start</p>
+        <p class="n50lp-card-title">ChatGPT ili Claude: kako se registrirati i što je besplatno</p>
+        <p class="n50lp-card-meta">3 min · AI alati</p>
+      </a>
       {{ end }}
+
+      {{ $recent := first 2 (where .Site.RegularPages "Section" "ne" "") }}
+      {{ range $recent }}
+      <a href="{{ .Permalink }}" class="n50lp-card">
+        <p class="n50lp-card-tag">{{ index .Params.tags 0 | default .Section }}</p>
+        <p class="n50lp-card-title">{{ .Title }}</p>
+        <p class="n50lp-card-meta">{{ .ReadingTime }} min čitanja</p>
+      </a>
+      {{ end }}
+
     </div>
   </section>
-  {{ end }}
 
-  <!-- ── Manifesto ────────────────────────────────────────────────── -->
-  <div class="n50-manifesto n50-fade-up">
-    <div class="n50-manifesto-item">
-      <div class="n50-manifesto-dash"></div>
-      <div class="n50-manifesto-heading">Bez dramatiziranja.</div>
-      <div class="n50-manifesto-body">Promjene su normalne. Prihvatamo ih korak po korak, bez paničarenja i bez obećavanja brzih rješenja.</div>
+  <!-- ── Challenge / Pitanje ──────────────────────────────────────── -->
+  <section class="n50lp-challenge">
+    <div class="n50lp-challenge-box">
+      <p class="n50lp-label">Pitanje za tebe</p>
+      <p class="n50lp-challenge-q">Koji zadatak u tvom tjednom radu traje predugo — i koji si oduvijek mislio/la da moraš raditi ručno?</p>
+      <p class="n50lp-challenge-ctx">Vjerojatno postoji vodič za to. Ili ga možemo napisati. Pošalji nam pitanje — odgovaramo na svaki email.</p>
     </div>
-    <div class="n50-manifesto-item">
-      <div class="n50-manifesto-dash"></div>
-      <div class="n50-manifesto-heading">Bez prodavanja magle.</div>
-      <div class="n50-manifesto-body">Realni ciljevi i mjerljivi mali pomaci. Svaki vodič ima jedan konkretan output koji možeš primijeniti danas.</div>
-    </div>
-    <div class="n50-manifesto-item">
-      <div class="n50-manifesto-dash"></div>
-      <div class="n50-manifesto-heading">Bez žurbe.</div>
-      <div class="n50-manifesto-body">Održiv ritam učenja koji stane u radni tjedan. Jedan vodič tjedno, konzistentno, dugoročno.</div>
-    </div>
-  </div>
+  </section>
 
-  <!-- ── Newsletter ───────────────────────────────────────────────── -->
-  <section class="n50-newsletter n50-fade-up" id="newsletter">
-    <div>
-      <div class="n50-newsletter-title">Jedan email.<br>Jednom tjedno.</div>
-      <p class="n50-newsletter-sub">Sažetak novih vodiča, jedan konkretan zadatak i 3 korisna linka — bez spama i bez prodavanja.</p>
-    </div>
-    <div>
-      <form class="n50-newsletter-form" id="n50-newsletter-form" novalidate>
-        <input type="email" id="n50-nl-email" placeholder="Email adresa" required autocomplete="email">
-        <label class="n50-newsletter-consent">
-          <input type="checkbox" id="n50-nl-consent" required>
-          <span>Slažem se s <a href="{{ "o-projektu/privatnost/" | relURL }}" target="_blank">politikom privatnosti</a> i pristajem na primanje newslettera.</span>
-        </label>
-        <button type="submit">Pretplati se →</button>
-        <div class="n50-newsletter-note">Otvorit će se stranica za potvrdu. Bez spama. Odjava u jednom kliku.</div>
-      </form>
-      <script>
-        document.getElementById('n50-newsletter-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          var email = document.getElementById('n50-nl-email').value.trim();
-          var consent = document.getElementById('n50-nl-consent').checked;
-          if (!email || !consent) return;
-          window.open('https://nakon50.beehiiv.com/subscribe?email=' + encodeURIComponent(email), '_blank');
-        });
-      </script>
+  <!-- ── Newsletter ────────────────────────────────────────────────── -->
+  <section class="n50lp-newsletter" id="newsletter">
+    <div class="n50lp-newsletter-inner">
+      <div>
+        <p class="n50lp-label n50lp-label--light">Newsletter</p>
+        <h2 class="n50lp-nl-title">Jedan vodič.<br>Jednom tjedno.<br><em>Odmah primjenjiv.</em></h2>
+        <p class="n50lp-nl-desc">Sažetak novog sadržaja, jedan konkretan zadatak i tri linka koja vrijede tvog vremena. Bez spama. Bez prodavanja.</p>
+      </div>
+      <div>
+        <form class="n50lp-nl-form" action="#" method="post">
+          <input class="n50lp-nl-input" type="email" name="email_address" placeholder="tvoj@email.hr" required>
+          <button class="n50lp-nl-submit" type="submit">Pretplati se →</button>
+          <p class="n50lp-nl-fine">Slažem se s politikom privatnosti i pristajem na primanje newslettera.</p>
+        </form>
+      </div>
     </div>
   </section>
 
 </div>
-
-<script>
-  // Scroll reveal
-  const n50Observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        n50Observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.n50-fade-up').forEach(el => n50Observer.observe(el));
-
-  // Bar animation stagger
-  document.querySelectorAll('.n50-bar').forEach((bar, i) => {
-    bar.style.animationDelay = `${0.04 * i + 0.2}s`;
-  });
-</script>
 {{ end }}
