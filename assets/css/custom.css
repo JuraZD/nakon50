@@ -2748,104 +2748,27 @@ body:has(#n50-homepage) header {
 }
 
 
-/* ── Full-width fix: izlaz iz Congo body px-6 paddinga ─────────── */
-/* Congo tema dodaje px-6 na body — full-width sekcije moraju izaći van */
-
-#n50-homepage {
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-
-/* Kompenzacija za sekcije s max-width inner wrapperom */
-.n50lp-hero,
-.n50lp-guides,
-.n50lp-challenge {
-  padding-left: calc(2.5rem + 1.5rem);
-  padding-right: calc(2.5rem + 1.5rem);
-}
+/* ── Full-width bleed fix ───────────────────────────────────────── */
+/* Probijamo Congo body padding za full-width sekcije               */
+/* Tehnika: left-offset = 50% container - 50vw (bez scrollbar)     */
 
 .n50lp-strip,
 .n50lp-not,
-.n50lp-path,
 .n50lp-newsletter {
-  /* ove sekcije su full-bleed, inner wrapper centrira sadržaj */
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
-.n50lp-story {
-  padding-left: calc(2.5rem + 1.5rem);
-  padding-right: calc(2.5rem + 1.5rem);
-}
-
-/* Announce bar */
-.n50-announce {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-@media (min-width: 640px) {
-  /* sm:px-14 = 3.5rem */
-  #n50-homepage {
-    margin-left: -3.5rem;
-    margin-right: -3.5rem;
-  }
-  .n50lp-hero,
-  .n50lp-story,
-  .n50lp-guides,
-  .n50lp-challenge {
-    padding-left: calc(2.5rem + 3.5rem);
-    padding-right: calc(2.5rem + 3.5rem);
-  }
-  .n50lp-strip,
-  .n50lp-not,
-  .n50lp-path,
-  .n50lp-newsletter {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  /* md:px-24 = 6rem */
-  #n50-homepage {
-    margin-left: -6rem;
-    margin-right: -6rem;
-  }
-  .n50lp-hero,
-  .n50lp-story,
-  .n50lp-guides,
-  .n50lp-challenge {
-    padding-left: calc(2.5rem + 6rem);
-    padding-right: calc(2.5rem + 6rem);
-  }
-  .n50lp-strip,
-  .n50lp-not,
-  .n50lp-path,
-  .n50lp-newsletter {
-    padding-left: 6rem;
-    padding-right: 6rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  /* lg:px-32 = 8rem */
-  #n50-homepage {
-    margin-left: -8rem;
-    margin-right: -8rem;
-  }
-  .n50lp-hero,
-  .n50lp-story,
-  .n50lp-guides,
-  .n50lp-challenge {
-    padding-left: calc(2.5rem + 8rem);
-    padding-right: calc(2.5rem + 8rem);
-  }
-  .n50lp-strip,
-  .n50lp-not,
-  .n50lp-path,
-  .n50lp-newsletter {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
+/* Path sekcija — neutralna boja, manje kritično ali isto full-bleed */
+.n50lp-path {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
